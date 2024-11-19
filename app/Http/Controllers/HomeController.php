@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Venue;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -10,9 +11,10 @@ class HomeController extends Controller
 
     public function index()
     {
-        $events = Event::all();
-        // dd($events);
-        return view('home.home', ['events' => $events]);
+        $events = Event::orderBy('date', 'desc')->take(10)->get();
+        $venues = Venue::orderBy('max_capacity')->take(3)->get();
+        $discoverMore = Event::orderBy('guests')->take(3)->get();
+        return view('home.home', ['events' => $events,'venues'=>$venues,'discoverMores'=>$discoverMore]);
     }
 
 

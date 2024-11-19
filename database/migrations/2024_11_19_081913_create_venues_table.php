@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('location');
             $table->decimal('ticket_price', 8, 2);
             $table->timestamps();
-        });
+          });
     }
 
 

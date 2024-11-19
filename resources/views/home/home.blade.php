@@ -102,14 +102,14 @@
                         <h2>Our Venues & Tickets</h2>
                     </div>
                 </div>
-                @foreach ($events as $event)
+                @foreach ($venues as $venue)
                     @livewire('venue-item', [
-                        'venueImage' => 'front/images/venue-01.jpg',
-                        'venueName' => $event->name,
-                        'venueDescription' => 'Lorem ipsum dolor sit amet, consectetur vinzi iscing elit, sed doers kontra.',
-                        'ticketsSold' => 750,
-                        'maxCapacity' => 450,
-                        'ticketPrice' => 65,
+                        'venueImage' => $venue->image,
+                        'venueName' => $venue->name,
+                        'venueDescription' => $venue->description,
+                        'ticketsSold' => 799,
+                        'maxCapacity' => $venue->max_capacity,
+                        'ticketPrice' => $venue->ticket_price,
                     ])
                 @endforeach
             </div>
@@ -126,55 +126,30 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-lg-4">
-                    <div class="event-item">
-                        <div class="thumb">
-                            <a href="event-details.html"><img src="front/images/event-01.jpg" alt=""></a>
-                        </div>
-                        <div class="down-content">
-                            <a href="event-details.html">
-                                <h4>Radio City Musical Hall</h4>
-                            </a>
-                            <ul>
-                                <li><i class="fa fa-clock-o"></i> Tuesday: 15:30-19:30</li>
-                                <li><i class="fa fa-map-marker"></i> Copacabana Beach, Rio de Janeiro</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="event-item">
-                        <div class="thumb">
-                            <a href="event-details.html"><img src="front/images/event-02.jpg" alt=""></a>
-                        </div>
-                        <div class="down-content">
-                            <a href="event-details.html">
-                                <h4>Madison Square Garden</h4>
-                            </a>
-                            <ul>
-                                <li><i class="fa fa-clock-o"></i> Wednesday: 08:00-14:00</li>
-                                <li><i class="fa fa-map-marker"></i> Copacabana Beach, Rio de Janeiro</li>
-                            </ul>
+                @foreach ($discoverMores as $discoverMore)
+                    <div class="col-lg-4">
+                        <div class="event-item">
+                            <div class="thumb">
+                                <a href="event-details.html"><img src="front/images/event-01.jpg" alt=""></a>
+                            </div>
+                            <div class="down-content">
+                                <a href="event-details.html">
+                                    <h4>{{ $discoverMore->name }}</h4>
+                                </a>
+                                <ul>
+                                    <li><i class="fa fa-clock-o"></i> {{ $discoverMore->date }}</li>
+                                    {{-- <li><i class="fa fa-clock-o"></i> Tuesday: 15:30-19:30</li> --}}
+
+                                    @foreach ($discoverMore->venues as $venue)
+                                        <li><i class="fa fa-map-marker"></i> {{ $venue->location }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="event-item">
-                        <div class="thumb">
-                            <a href="event-details.html"><img src="front/images/event-03.jpg" alt=""></a>
-                        </div>
-                        <div class="down-content">
-                            <a href="event-details.html">
-                                <h4>Royce Hall</h4>
-                            </a>
-                            <ul>
-                                <li><i class="fa fa-clock-o"></i> Thursday: 09:00-23:00</li>
-                                <li><i class="fa fa-map-marker"></i> Copacabana Beach, Rio de Janeiro</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
+    </div>
     </div>
 @endsection
