@@ -10,6 +10,7 @@ class Event extends Model
 
     protected $fillable = [
         'venue_id',
+        'club_id',
         'image',
         'name',
         'description',
@@ -28,4 +29,5 @@ class Event extends Model
     {
         return $this->hasMany(Ticket::class);
     }
+    
 }

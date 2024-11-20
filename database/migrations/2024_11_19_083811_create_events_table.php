@@ -11,6 +11,7 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('club_id')->nullable();
             $table->unsignedBigInteger('venue_id');
             $table->string('image')->nullable();
             $table->string('name');
@@ -19,6 +20,9 @@ return new class extends Migration
             $table->time('time');
             $table->integer('guests')->nullable();
             $table->timestamps();
+
+            // foreign
+            $table->foreign('club_id')->references('id')->on('clubs')->onDelete('cascade');
             $table->foreign('venue_id')->references('id')->on('venues')->onDelete('cascade');
         });
     }

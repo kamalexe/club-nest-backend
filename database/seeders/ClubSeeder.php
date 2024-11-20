@@ -4,19 +4,23 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Event;
+use App\Models\Club;
 use Database\Seeders\RecommendedEventSeeder;
 use Database\Seeders\RecommendedClubSeeder;
 
 
-class EventSeeder extends Seeder
+
+class ClubSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-      Event::factory()->count(50)->create();
-
+         Club::factory()
+            ->count(5)
+            ->hasMembers(10)
+            ->hasEvents(3)
+            ->create();
     }
 }
