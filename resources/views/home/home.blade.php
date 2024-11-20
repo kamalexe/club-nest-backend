@@ -139,10 +139,7 @@
                                 <ul>
                                     <li><i class="fa fa-clock-o"></i> {{ $discoverMore->date }}</li>
                                     {{-- <li><i class="fa fa-clock-o"></i> Tuesday: 15:30-19:30</li> --}}
-
-                                    @foreach ($discoverMore->venues as $venue)
-                                        <li><i class="fa fa-map-marker"></i> {{ $venue->location }}</li>
-                                    @endforeach
+                                    <li><i class="fa fa-map-marker"></i> {{ $venue->location }}</li>
                                 </ul>
                             </div>
                         </div>
