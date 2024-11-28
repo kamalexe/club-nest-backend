@@ -2,9 +2,7 @@
     <div class="venue-item">
         <div class="thumb">
             {{-- <img src="{{ $venueImage }}" alt=""> --}}
-            <img src="{{ $venueImage }}" alt="Venue Image"
-                onerror="this.onerror=null; this.src='{{ asset('front/images/event-01.jpg') }}';"
-                style="background-image: url('{{ asset('front/images/event-02.jpg') }}');">
+            <img alt="Venue Image" src='{{ asset('front/images/event-01.jpg') }}'>
 
         </div>
         <div class="down-content">

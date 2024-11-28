@@ -84,6 +84,18 @@
                     ])
                 @endforeach
 
+                <div class="col-lg-12">
+                    <div class="pagination">
+                        <ul>
+                            {{-- <li><a href="#">Prev</a></li>
+                            <li><a href="#">1</a></li>
+                            <li class="active"><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">Next</a></li> --}}
+                            {{ $tickets->links('pagination::bootstrap-4') }}
+                        </ul>
+                    </div>
+                </div>
 
             </div>
         </div>

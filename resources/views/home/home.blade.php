@@ -2,27 +2,39 @@
 
 @section('content')
     <!-- ***** Main Banner Area Start ***** -->
+
     <div class="main-banner">
-        <div class="counter-content">
-            <ul>
-                <li>Days<span id="days"></span></li>
-                <li>Hours<span id="hours"></span></li>
-                <li>Minutes<span id="minutes"></span></li>
-                <li>Seconds<span id="seconds"></span></li>
-            </ul>
-        </div>
+        @php
+            $hasEvent = $mostRecentEvent;
+        @endphp
+        @if ($hasEvent)
+            <div class="counter-content">
+                <ul>
+                    <li>Days<span id="days"></span></li>
+                    <li>Hours<span id="hours"></span></li>
+                    <li>Minutes<span id="minutes"></span></li>
+                    <li>Seconds<span id="seconds"></span></li>
+                </ul>
+
+            </div>
+        @endif
+
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="main-content">
-                        <div class="next-show">
-                            <i class="fa fa-arrow-up"></i>
-                            <span>Next Show</span>
-                        </div>
-                        <h6>Opening on Thursday, March 31st</h6>
-                        <h2>The Sunny Hill Festival 2022</h2>
+                        @if ($hasEvent)
+                            <div class="next-show">
+                                <i class="fa fa-arrow-up"></i>
+                                <span>Next Show</span>
+                            </div>
+                            <h6>Opening on Thursday, March 31st</h6>
+                        @endif
+                        <h2>{{ $hasEvent ? $mostRecentEvent->name : 'Welcome To Club-Nest' }}</h2>
+                        </h2>
                         <div class="main-white-button">
-                            <a href="https://www.paytmbank.com/">Purchase Tickets</a>
+                            <a
+                                href={{ $hasEvent ? 'https://www.paytmbank.com/' : '#' }}>{{ $hasEvent ? 'Tickets' : 'Explore Our Club' }}</a>
                         </div>
                     </div>
                 </div>
@@ -62,14 +74,16 @@
                         <p>ArtXibition Event Template is brought to you by Tooplate website and it included total 7 HTML
                             pages.
                             These are <a href="index.html">Homepage</a>, <a href="about.html">About</a>,
-                            <a href="rent-venue.html">Rent a venue</a>, <a href="shows-events.html">shows &amp; events</a>,
+                            <a href="rent-venue.html">Rent a venue</a>, <a href="shows-events.html">shows &amp;
+                                events</a>,
                             <a href="event-details.html">event details</a>, <a href="tickets.html">tickets</a>, and <a
                                 href="#">ticket details</a>.
-                            You can feel free to modify any page as you like. If you have any question, please visit our <a
-                                href="https://www.tooplate.com/contact" target="_blank">Contact page</a>.
+                            You can feel free to modify any page as you like. If you have any question, please visit our
+                            <a href="https://www.tooplate.com/contact" target="_blank">Contact page</a>.
                         </p>
                         <br>
-                        <p>You can use this event template for your commercial or business website. You are not permitted to
+                        <p>You can use this event template for your commercial or business website. You are not
+                            permitted to
                             redistribute this template ZIP file on any template download website. If you need the latest
                             HTML templates, you may visit <a href="https://www.toocss.com/" target="_blank">Too CSS</a>
                             website that features a great collection of templates in different categories.</p>
