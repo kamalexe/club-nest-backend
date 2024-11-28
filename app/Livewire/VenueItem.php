@@ -12,8 +12,10 @@ class VenueItem extends Component
     public $ticketsSold;
     public $maxCapacity;
     public $ticketPrice;
+     public $urlPath;
 
-    public function mount($venueImage, $venueName, $venueDescription, $ticketsSold, $maxCapacity, $ticketPrice)
+
+    public function mount($venueImage, $venueName, $venueDescription, $ticketsSold, $maxCapacity, $ticketPrice,$urlPath = null,)
     {
         $this->venueImage = $venueImage;
         $this->venueName = $venueName;

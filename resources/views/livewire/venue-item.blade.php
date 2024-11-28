@@ -4,13 +4,13 @@
             {{-- <img src="{{ $venueImage }}" alt=""> --}}
             <img src="{{ $venueImage }}" alt="Venue Image"
                 onerror="this.onerror=null; this.src='{{ asset('front/images/event-01.jpg') }}';"
-                style="background-image: url('{{ asset('front/images/placeholder.jpg') }}');">
+                style="background-image: url('{{ asset('front/images/event-02.jpg') }}');">
 
         </div>
         <div class="down-content">
             <div class="left-content">
                 <div class="main-white-button">
-                    <a href="{{ route('ticket-details') }}">Purchase Tickets</a>
+                    <a href="{{ $urlPath }}">Purchase Tickets</a>
                 </div>
             </div>
             <div class="right-content">

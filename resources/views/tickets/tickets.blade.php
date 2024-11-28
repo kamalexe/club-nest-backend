@@ -71,65 +71,19 @@
                 </div>
 
 
-                @livewire('small-tickets-page-card', [
-                    'image' => 'front/images/ticket-01.jpg',
-                    'price' => 45,
-                    'ticketsLeft' => 200,
-                    'eventName' => 'Golden Festival',
-                    'eventTime' => 'Sunday: 06:00 PM to 09:00 PM',
-                    'eventLocation' => '789 Copacabana Beach, Rio de Janeiro',
-                    'ticketDetailsRoute' => 'ticket-details',
-                ])
+                @foreach ($tickets as $ticket)
+                    @livewire('small-tickets-page-card', [
+                        'image' => 'front/images/ticket-01.jpg',
+                        // 'image' => $ticket->event->image,
+                        'price' => $ticket->price,
+                        'ticketsLeft' => $ticket->tickets_available,
+                        'eventName' => $ticket->event->name,
+                        'eventTime' => $ticket->event->date,
+                        'eventLocation' => $ticket->event->location,
+                        'ticketDetailsRoute' => route('ticket-details', $ticket->event->id),
+                    ])
+                @endforeach
 
-                @livewire('small-tickets-page-card', [
-                    'image' => 'front/images/ticket-02.jpg',
-                    'price' => 45,
-                    'ticketsLeft' => 200,
-                    'eventName' => 'Golden Festival',
-                    'eventTime' => 'Sunday: 06:00 PM to 09:00 PM',
-                    'eventLocation' => '789 Copacabana Beach, Rio de Janeiro',
-                    'ticketDetailsRoute' => 'ticket-details',
-                ])
-
-                @livewire('small-tickets-page-card', [
-                    'image' => 'front/images/ticket-03.jpg',
-                    'price' => 65,
-                    'ticketsLeft' => 260,
-                    'eventName' => 'Water Splash Festival',
-                    'eventTime' => 'Tuesday: 07:00 PM to 11:00 PM',
-                    'eventLocation' => '456 Copacabana Beach, Rio de Janeiro',
-                    'ticketDetailsRoute' => 'ticket-details',
-                ])
-
-                @livewire('small-tickets-page-card', [
-                    'image' => 'front/images/ticket-04.jpg',
-                    'price' => 20,
-                    'ticketsLeft' => 340,
-                    'eventName' => 'Tiger Festival',
-                    'eventTime' => 'Thursday: 06:40 PM to 11:40 PM',
-                    'eventLocation' => '123 Copacabana Beach, Rio de Janeiro',
-                    'ticketDetailsRoute' => 'ticket-details',
-                ])
-
-                @livewire('small-tickets-page-card', [
-                    'image' => 'front/images/ticket-05.jpg',
-                    'price' => 30,
-                    'ticketsLeft' => 420,
-                    'eventName' => 'Woodland Festival',
-                    'eventTime' => 'Wednesday: 06:00 PM to 09:00 PM',
-                    'eventLocation' => '1122 Copacabana Beach, Rio de Janeiro',
-                    'ticketDetailsRoute' => 'ticket-details',
-                ])
-
-                @livewire('small-tickets-page-card', [
-                    'image' => 'front/images/ticket-06.jpg',
-                    'price' => 40,
-                    'ticketsLeft' => 520,
-                    'eventName' => 'Winter Festival',
-                    'eventTime' => 'Saturday: 06:00 PM to 09:00 PM',
-                    'eventLocation' => '220 Copacabana Beach, Rio de Janeiro',
-                    'ticketDetailsRoute' => 'ticket-details',
-                ])
 
             </div>
         </div>

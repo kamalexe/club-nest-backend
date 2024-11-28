@@ -14,7 +14,7 @@
                 <li><i class="fa fa-map-marker"></i> {{ $eventLocation }}</li>
             </ul>
             <div class="main-dark-button">
-                <a href="{{ route($ticketDetailsRoute) }}">Purchase Tickets</a>
+                <a href={{ $ticketDetailsRoute }}>Purchase Tickets</a>
             </div>
         </div>
     </div>

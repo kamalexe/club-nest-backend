@@ -2,41 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
-use App\Models\Venue;
-use App\Models\Club;
 use Illuminate\Http\Request;
+use App\Models\Event;
 
-class HomeController extends Controller
+class EventController extends Controller
 {
-
     public function index()
     {
-        $events = Event::orderBy('date', 'desc')->take(10)->get();
-        $clubs = Club::take(3)->get();
-        $discoverMore = Event::orderBy('guests')->take(3)->get();
-        return view('home.home', ['events' => $events,'clubs'=>$clubs,'discoverMores'=>$discoverMore]);
+        $events = Event::paginate(10);
+        return view('event_details.event-details', ['events' => $events]);
     }
-
 
     public function create()
     {
         //
     }
 
-
     public function store(Request $request)
     {
         //
     }
 
-
-    public function show(string $id)
+    public function show(Event $event)
     {
-        //
+        $event->load('club');
+        return view('ticket_details.ticket-details', ['event' => $event,]);
     }
-
-
     public function edit(string $id)
     {
         //
@@ -46,7 +37,6 @@ class HomeController extends Controller
     {
         //
     }
-
 
     public function destroy(string $id)
     {

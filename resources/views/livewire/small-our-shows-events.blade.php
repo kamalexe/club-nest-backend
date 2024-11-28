@@ -12,7 +12,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="thumb">
-                    <img src="{{ asset($eventImage) }}" alt="">
+                    <img src="{{ asset($eventImage) }}" alt="{{ $eventName }}" loading="lazy">
                 </div>
             </div>
             <div class="col-lg-4">
@@ -32,7 +32,7 @@
                         </li>
                     </ul>
                     <div class="main-dark-button">
-                        <a href="{{ route($ticketPurchaseRoute) }}">Purchase Tickets</a>
+                        <a href={{ $ticketPurchaseRoute }}>Purchase Tickets</a>
                     </div>
                 </div>
             </div>

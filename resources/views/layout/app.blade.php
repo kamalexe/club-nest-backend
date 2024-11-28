@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Tooplate">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link
         href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
         rel="stylesheet">
@@ -167,7 +168,7 @@
                 </div>
                 <div class="col-lg-6 col-sm-6">
                     <div class="text-button">
-                        <a href="{{ route('rent-venue') }}">Contact Us Now! <i class="fa fa-arrow-right"></i></a>
+                        <a href="/#subscribe">Contact Us Now! <i class="fa fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -197,12 +198,13 @@
                                     class="{{ request()->routeIs('event-details') ? 'active' : '' }}">Event Details</a>
                             </li>
                             <li>
-                                <a href="{{ route('shows-events') }}"
-                                    class="{{ request()->routeIs('shows-events') ? 'active' : '' }}">Shows & Events</a>
+                                <a href="#" class="{{ request()->routeIs('shows-events') ? 'active' : '' }}">Shows
+                                    & Events
+                                </a>
                             </li>
                             <li>
-                                <a href="{{ route('tickets') }}"
-                                    class="{{ request()->routeIs('tickets') ? 'active' : '' }}">Tickets</a>
+                                <a href="{{ route('tickets.index') }}"
+                                    class="{{ request()->routeIs('ticketstickets.index') ? 'active' : '' }}">Tickets</a>
                             </li>
                         </ul>
 
@@ -225,7 +227,7 @@
         @yield('content')
     </main>
     <!-- *** Subscribe *** -->
-    <div class="subscribe">
+    <div class="subscribe" id = "subscribe">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
@@ -310,8 +312,9 @@
                                         <li><a href="/" class="active">Home</a></li>
                                         <li><a href="{{ route('about') }}">About Us</a></li>
                                         <li><a href="{{ route('rent-venue') }}">Rent Venue</a></li>
-                                        <li><a href="{{ route('shows-events') }}">Shows & Events</a></li>
-                                        <li><a href="{{ route('tickets') }}">Tickets</a></li>
+                                        <li><a href="{{ route('shows-events') }}">
+                                                Shows & Events</a></li>
+                                        <li><a href="{{ route('tickets.index') }}">Tickets</a></li>
                                     </ul>
                                 </div>
                             </div>

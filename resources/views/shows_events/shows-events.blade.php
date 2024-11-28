@@ -29,7 +29,7 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="main-dark-button">
-                                            <a href="{{ route('ticket-details') }}">Purchase Tickets</a>
+                                            <a href="https://www.paytmbank.com/">Purchase Tickets</a>
                                         </div>
                                     </div>
                                 </div>
@@ -86,60 +86,25 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-9">
+
                                             <div class="row">
-                                                @livewire('small-our-shows-events', [
-                                                    'eventName' => 'Monkey Dance Festival',
-                                                    'eventDescription' => 'Lorem ipsum dolor sit amet, consectetur do adipiscing eliterirt sed eiusmod alori...',
-                                                    'eventImage' => 'front/images/event-page-01.jpg',
-                                                    'eventDate' => 'July 14 Friday 08:30 AM - 09:30 PM',
-                                                    'eventLocation' => 'Copacabana Beach, Rio de Janeiro',
-                                                    'eventGuests' => 450,
-                                                    'eventDetailsRoute' => 'event-details',
-                                                    'ticketPurchaseRoute' => 'ticket-details',
-                                                ])
-                                                @livewire('small-our-shows-events', [
-                                                    'eventName' => 'Water Splash Festival',
-                                                    'eventDescription' => 'Lorem ipsum dolor sit amet, consectetur do adipiscing eliterirt sed eiusmod alori...',
-                                                    'eventImage' => 'front/images/event-page-04.jpg',
-                                                    'eventDate' => 'April 24 Friday 12:00 AM - 12:00 PM',
-                                                    'eventLocation' => 'Copacabana Beach, Rio de Janeiro',
-                                                    'eventGuests' => 528,
-                                                    'eventDetailsRoute' => 'event-details',
-                                                    'ticketPurchaseRoute' => 'ticket-details',
-                                                ])
-
-                                                @livewire('small-our-shows-events', [
-                                                    'eventName' => 'Sunny Hill Festival',
-                                                    'eventDescription' => 'Lorem ipsum dolor sit amet, consectetur do adipiscing eliterirt sed eiusmod alori...',
-                                                    'eventImage' => 'front/images/event-page-01.jpg',
-                                                    'eventDate' => 'April 24 Friday 12:00 AM - 12:00 PM',
-                                                    'eventLocation' => 'Copacabana Beach, Rio de Janeiro',
-                                                    'eventGuests' => 528,
-                                                    'eventDetailsRoute' => 'event-details',
-                                                    'ticketPurchaseRoute' => 'ticket-details',
-                                                ])
-                                                @livewire('small-our-shows-events', [
-                                                    'eventName' => 'Sunny Hill Festival',
-                                                    'eventDescription' => 'Lorem ipsum dolor sit amet, consectetur do adipiscing eliterirt sed eiusmod alori...',
-                                                    'eventImage' => 'front/images/event-page-02.jpg',
-                                                    'eventDate' => 'April 24 Friday 12:00 AM - 12:00 PM',
-                                                    'eventLocation' => 'Copacabana Beach, Rio de Janeiro',
-                                                    'eventGuests' => 528,
-                                                    'eventDetailsRoute' => 'event-details',
-                                                    'ticketPurchaseRoute' => 'ticket-details',
-                                                ])
-                                                @livewire('small-our-shows-events', [
-                                                    'eventName' => 'New Rock Festival',
-                                                    'eventDescription' => 'Lorem ipsum dolor sit amet, consectetur do adipiscing eliterirt sed eiusmod alori...',
-                                                    'eventImage' => 'front/images/event-page-02.jpg',
-                                                    'eventDate' => 'June 12 Friday 09:00 AM - 09:00 PM',
-                                                    'eventLocation' => 'Copacabana Beach, Rio de Janeiro',
-                                                    'eventGuests' => 360,
-                                                    'eventDetailsRoute' => 'event-details',
-                                                    'ticketPurchaseRoute' => 'ticket-details',
-                                                ])
-
-
+                                                @if ($upCommingEvents->isEmpty())
+                                                    <h1>No upcoming events.</h1>
+                                                @else
+                                                    @foreach ($upCommingEvents as $event)
+                                                        @livewire('small-our-shows-events', [
+                                                            'eventName' => $event->name,
+                                                            'eventDescription' => $event->description,
+                                                            'eventImage' => 'front/images/about-map-image.jpg',
+                                                            // 'eventImage' => $event->image,
+                                                            'eventDate' => $event->date,
+                                                            'eventLocation' => $event->location,
+                                                            'eventGuests' => $event->max_capacity,
+                                                            'eventDetailsRoute' => 'event-details',
+                                                            'ticketPurchaseRoute' => 'ticket-details',
+                                                        ])
+                                                    @endforeach
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -192,62 +157,29 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="col-lg-9">
-                                            <div class="row">
 
-                                                @livewire('small-our-shows-events', [
-                                                    'eventName' => 'Water Splash Festival',
-                                                    'eventDescription' => 'Lorem ipsum dolor sit amet, consectetur do adipiscing eliterirt sed eiusmod alori...',
-                                                    'eventImage' => 'front/images/event-page-04.jpg',
-                                                    'eventDate' => 'April 24 Friday 12:00 AM - 12:00 PM',
-                                                    'eventLocation' => 'Copacabana Beach, Rio de Janeiro',
-                                                    'eventGuests' => 528,
-                                                    'eventDetailsRoute' => 'event-details',
-                                                    'ticketPurchaseRoute' => 'ticket-details',
-                                                ])
+                                            @if ($pastEvents->isEmpty())
+                                                <h1>No past events.</h1>
+                                            @else
+                                                @foreach ($pastEvents as $event)
+                                                    @livewire('small-our-shows-events', [
+                                                        'eventName' => $event->name,
+                                                        'eventDescription' => $event->description,
+                                                        'eventImage' => 'front/images/about-map-image.jpg',
+                                                        // 'eventImage' => $event->image,
+                                                        'eventDate' => $event->date,
+                                                        'eventLocation' => $event->location,
+                                                        'eventGuests' => $event->max_capacity,
+                                                        'eventDetailsRoute' => 'event-details',
+                                                    
+                                                        'ticketPurchaseRoute' => route('ticket-details', $event->id),
+                                                    ])
+                                                @endforeach
 
-                                                @livewire('small-our-shows-events', [
-                                                    'eventName' => 'Sunny Hill Festival',
-                                                    'eventDescription' => 'Lorem ipsum dolor sit amet, consectetur do adipiscing eliterirt sed eiusmod alori...',
-                                                    'eventImage' => 'front/images/event-page-01.jpg',
-                                                    'eventDate' => 'April 24 Friday 12:00 AM - 12:00 PM',
-                                                    'eventLocation' => 'Copacabana Beach, Rio de Janeiro',
-                                                    'eventGuests' => 528,
-                                                    'eventDetailsRoute' => 'event-details',
-                                                    'ticketPurchaseRoute' => 'ticket-details',
-                                                ])
-                                                @livewire('small-our-shows-events', [
-                                                    'eventName' => 'Sunny Hill Festival',
-                                                    'eventDescription' => 'Lorem ipsum dolor sit amet, consectetur do adipiscing eliterirt sed eiusmod alori...',
-                                                    'eventImage' => 'front/images/event-page-02.jpg',
-                                                    'eventDate' => 'April 24 Friday 12:00 AM - 12:00 PM',
-                                                    'eventLocation' => 'Copacabana Beach, Rio de Janeiro',
-                                                    'eventGuests' => 528,
-                                                    'eventDetailsRoute' => 'event-details',
-                                                    'ticketPurchaseRoute' => 'ticket-details',
-                                                ])
-                                                @livewire('small-our-shows-events', [
-                                                    'eventName' => 'New Rock Festival',
-                                                    'eventDescription' => 'Lorem ipsum dolor sit amet, consectetur do adipiscing eliterirt sed eiusmod alori...',
-                                                    'eventImage' => 'front/images/event-page-02.jpg',
-                                                    'eventDate' => 'June 12 Friday 09:00 AM - 09:00 PM',
-                                                    'eventLocation' => 'Copacabana Beach, Rio de Janeiro',
-                                                    'eventGuests' => 360,
-                                                    'eventDetailsRoute' => 'event-details',
-                                                    'ticketPurchaseRoute' => 'ticket-details',
-                                                ])
-                                                @livewire('small-our-shows-events', [
-                                                    'eventName' => 'Monkey Dance Festival',
-                                                    'eventDescription' => 'Lorem ipsum dolor sit amet, consectetur do adipiscing eliterirt sed eiusmod alori...',
-                                                    'eventImage' => 'front/images/event-page-01.jpg',
-                                                    'eventDate' => 'July 14 Friday 08:30 AM - 09:30 PM',
-                                                    'eventLocation' => 'Copacabana Beach, Rio de Janeiro',
-                                                    'eventGuests' => 450,
-                                                    'eventDetailsRoute' => 'event-details',
-                                                    'ticketPurchaseRoute' => 'ticket-details',
-                                                ])
-                                            </div>
                                         </div>
+                                        @endif
                                     </div>
                                 </article>
                             </section>

@@ -11,13 +11,16 @@ return new class extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
-             $table->unsignedBigInteger('club_id');
+            $table->unsignedBigInteger('club_id');
             $table->string('name');
+            $table->string('post');
+            $table->boolean('incharge')->default(false);
             $table->string('email')->unique();
             $table->string('phone')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
 
-            //foreign
+            // Foreign key constraint for club_id (referencing the 'id' field on the 'clubs' table)
             $table->foreign('club_id')->references('id')->on('clubs')->onDelete('cascade');
         });
     }
@@ -27,6 +30,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+
         Schema::dropIfExists('members');
     }
 };

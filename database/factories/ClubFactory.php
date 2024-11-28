@@ -1,8 +1,10 @@
 <?php
+
 namespace Database\Factories;
 
 use App\Models\Club;
 use App\Models\Member;
+use App\Models\Event;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ClubFactory extends Factory
@@ -12,9 +14,10 @@ class ClubFactory extends Factory
     public function definition()
     {
         return [
+
             'name' => $this->faker->company,
-            'description' => $this->faker->paragraph,
-            'image' => $this->faker->imageUrl(),    
+            'description' => $this->faker->text(200),
+            'image' => $this->faker->imageUrl(150, 150),
         ];
     }
 }

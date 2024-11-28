@@ -12,8 +12,9 @@ class Counter extends Component
     public $eventDate;
     public $eventTime;
     public $location;
+    public $urlPath;
 
-    public function mount($label = "Hi", $eventName = "Sunny Hill Festival", $ticketsAvailable = 140, $eventDate = "Sep 16, 2021", $eventTime = "18:00 to 22:00", $location = "Copacabana Beach, Rio de Janeiro")
+    public function mount($label = "Hi", $eventName = "Sunny Hill Festival", $ticketsAvailable = 140, $eventDate = "Sep 16, 2021", $eventTime = "18:00 to 22:00", $location = "Copacabana Beach, Rio de Janeiro",  $urlPath = null)
     {
        $this->label = $label;
         $this->eventName = $eventName;
@@ -21,6 +22,7 @@ class Counter extends Component
         $this->eventDate = $eventDate;
         $this->eventTime = $eventTime;
         $this->location = $location;
+        $this->urlPath = $urlPath;
     }
     public function render()
     {

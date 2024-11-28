@@ -4,10 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Event;
 use App\Models\Club;
+use App\Models\Volunteer;
 
-class EventSeeder extends Seeder
+class VolunteerSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,8 +15,9 @@ class EventSeeder extends Seeder
     public function run(): void
     {
         $clubs = Club::all();
+
         foreach ($clubs as $club) {
-            Event::factory(3)->create([
+            Volunteer::factory(2)->create([
                 'club_id' => $club->id
             ]);
         }

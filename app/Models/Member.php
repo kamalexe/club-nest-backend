@@ -9,7 +9,7 @@ class Member extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['club_id', 'name', 'email', 'phone'];
+    protected $fillable = ['club_id', 'name', 'post', 'email', 'image', 'phone', 'incharge'];
 
     public function club()
     {

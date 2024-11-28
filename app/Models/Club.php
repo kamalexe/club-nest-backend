@@ -11,15 +11,12 @@ class Club extends Model
 
     protected $fillable = ['name', 'description', 'image'];
 
+
     public function members()
     {
         return $this->hasMany(Member::class);
     }
 
-    public function incharges()
-    {
-        return $this->hasMany(Incharge::class);
-    }
 
     public function volunteers()
     {
@@ -29,5 +26,13 @@ class Club extends Model
     public function events()
     {
         return $this->hasMany(Event::class);
+    }
+    public function clubMembers()
+    {
+        return $this->hasMany(Member::class)->where('incharge', 0);
+    }
+    public function inchargeMember()
+    {
+        return $this->hasMany(Member::class)->where('incharge', 1)->first();
     }
 }

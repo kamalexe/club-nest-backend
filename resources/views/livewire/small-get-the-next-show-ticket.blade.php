@@ -2,7 +2,7 @@
     <h5>{{ $eventName }}</h5>
     <span>{{ $eventDate }}<br>{{ $eventTime }}</span>
     <div class="icon-button">
-        <a href="{{ route($ticketRoute) }}">
+        <a href="{{ $ticketRoute }}">
             <i class="fa fa-shopping-cart"></i>
         </a>
     </div>

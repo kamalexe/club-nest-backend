@@ -35,7 +35,7 @@
                             </ul>
                             <span><i class="fa fa-ticket"></i> Tickets Starting From $34.00</span>
                             <div class="main-dark-button">
-                                <a href="{{ route('ticket-details') }}">Ticket Details</a>
+                                <a href="#">Ticket Details</a>
                             </div>
                         </div>
                     </div>
@@ -56,7 +56,7 @@
                             &amp;
                             events</a>,
                         <a href="{{ route('event-details') }}">event details</a>, <a
-                            href="{{ route('tickets') }}">tickets</a>, and <a href="{{ route('ticket-details') }}">ticket
+                            href="{{ route('tickets.index') }}">tickets</a>, and <a href="#">ticket
                             details</a>.
                         You can feel free to modify any page as you like. If you have any question, please visit our <a
                             href="https://www.tooplate.com/contact" target="_blank">Contact page</a>.

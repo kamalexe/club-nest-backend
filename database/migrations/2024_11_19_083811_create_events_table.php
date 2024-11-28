@@ -11,19 +11,20 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('club_id')->nullable();
-            $table->unsignedBigInteger('venue_id');
+            $table->unsignedBigInteger('club_id');
             $table->string('image')->nullable();
             $table->string('name');
             $table->text('description');
             $table->date('date');
             $table->time('time');
+            $table->integer('max_capacity');
+            $table->string('location');
+            $table->decimal('ticket_price', 8, 2);
             $table->integer('guests')->nullable();
             $table->timestamps();
 
             // foreign
             $table->foreign('club_id')->references('id')->on('clubs')->onDelete('cascade');
-            $table->foreign('venue_id')->references('id')->on('venues')->onDelete('cascade');
         });
     }
 

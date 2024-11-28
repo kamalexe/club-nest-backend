@@ -2,40 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ticket;
 use App\Models\Event;
-use App\Models\Venue;
-use App\Models\Club;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class TicketController extends Controller
 {
-
     public function index()
     {
-        $events = Event::orderBy('date', 'desc')->take(10)->get();
-        $clubs = Club::take(3)->get();
-        $discoverMore = Event::orderBy('guests')->take(3)->get();
-        return view('home.home', ['events' => $events,'clubs'=>$clubs,'discoverMores'=>$discoverMore]);
+        $tickets = Ticket::all();
+        return view('tickets.tickets', compact('tickets'));
     }
-
 
     public function create()
     {
         //
     }
 
-
     public function store(Request $request)
     {
         //
     }
 
-
     public function show(string $id)
     {
         //
-    }
+        $event = Event::findOrFail($id);
 
+        return view('ticket_details.ticket-details', compact('event'));
+    }
 
     public function edit(string $id)
     {
@@ -46,7 +41,6 @@ class HomeController extends Controller
     {
         //
     }
-
 
     public function destroy(string $id)
     {

@@ -23,53 +23,23 @@
                 </div>
                 <div class="col-lg-12">
                     <ul>
-
-                        @livewire('counter', [
-                            'label' => 'Sunny Hill Festival',
-                            'ticketsAvailable' => 140,
-                            'eventDate' => 'Sep 16, 2021',
-                            'eventTime' => '18:00 to 22:00',
-                            'location' => 'Copacabana Beach, Rio de Janeiro',
-                        ])
-
-
-                        @livewire('counter', [
-                            'label' => 'Hip Hop Farm',
-                            'ticketsAvailable' => 160,
-                            'eventDate' => 'Sep 20, 2021',
-                            'eventTime' => '18:00 to 22:00',
-                            'location' => 'Copacabana Beach, Rio de Janeiro',
-                        ])
-
-
-
-                        @livewire('counter', [
-                            'label' => 'Gala Rock Festival',
-                            'ticketsAvailable' => 128,
-                            'eventDate' => 'Sep 18, 2021',
-                            'eventTime' => '18:00 to 22:00',
-                            'location' => 'Copacabana Beach, Rio de Janeiro',
-                        ])
-
-
-                        @livewire('counter', [
-                            'label' => 'Balada Music',
-                            'ticketsAvailable' => 240,
-                            'eventDate' => 'Oct 14, 2021',
-                            'eventTime' => '18:00 to 22:00',
-                            'location' => 'Copacabana Beach, Rio de Janeiro',
-                        ])
+                        @foreach ($events as $event)
+                            @livewire('counter', [
+                                'label' => $event->name,
+                                'ticketsAvailable' => $event->tickets->count(),
+                                'eventDate' => $event->date,
+                                'eventTime' => $event->time,
+                                'location' => $event->location,
+                                'urlPath' => route('events.show', $event->id),
+                            ])
+                        @endforeach
                     </ul>
                 </div>
+                <!-- Pagination Links -->
                 <div class="col-lg-12">
                     <div class="pagination">
-                        <ul>
-                            <li><a href="#">Prev</a></li>
-                            <li><a href="#">1</a></li>
-                            <li class="active"><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">Next</a></li>
-                        </ul>
+                        <!-- Render pagination links -->
+                        {{ $events->links('pagination::bootstrap-4') }}
                     </div>
                 </div>
             </div>

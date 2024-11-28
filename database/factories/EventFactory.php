@@ -3,6 +3,8 @@
 namespace Database\Factories;
 use App\Models\Venue;
 use App\Models\Event;
+use App\Models\Club;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -15,13 +17,16 @@ class EventFactory extends Factory
     public function definition(): array
     {
         return [
-            'venue_id' => Venue::factory(), // Ensure venues exist or use a factory
-            'image' => $this->faker->imageUrl(640, 480, 'events', true),
+            'club_id' => Club::factory(),  // Use the Club factory directly
+            'image' => $this->faker->imageUrl(),
             'name' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
-            'date' => $this->faker->dateTimeBetween('now', '+1 year')->format('Y-m-d'),
+            'date' => $this->faker->date(),
             'time' => $this->faker->time(),
-            'guests' => $this->faker->numberBetween(10, 300),
+            'guests' => $this->faker->numberBetween(50, 200),
+            'max_capacity' => $this->faker->numberBetween(100, 500),
+            'location' => $this->faker->address,
+            'ticket_price' => $this->faker->randomFloat(2, 10, 100),
         ];
     }
 }

@@ -30,7 +30,7 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="main-dark-button">
-                                            <a href="{{ route('ticket-details') }}">Purchase Tickets</a>
+                                            <a href="https://www.paytmbank.com/">Purchase Tickets</a>
                                         </div>
                                     </div>
                                 </div>
@@ -50,7 +50,7 @@
                                                     <a href="{{ route('rent-venue') }}">Rent a venue</a>, <a
                                                         href="{{ route('shows-events') }}">shows &amp; events</a>,
                                                     <a href="{{ route('event-details') }}">event details</a>, <a
-                                                        href="{{ route('tickets') }}">tickets</a>, and <a
+                                                        href="{{ route('tickets.index') }}">tickets</a>, and <a
                                                         href="{{ route('ticket-details') }}">ticket details</a>.
                                                     You can feel free to modify any page as you like. If you have any
                                                     question, please visit our <a href="https://www.tooplate.com/contact"
