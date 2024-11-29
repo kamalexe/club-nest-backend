@@ -129,11 +129,89 @@
                         'eventName' => $members->name,
                         //  'eventDetailsRoute' => 'event-details',
                         'eventDetailsRoute' => '#',
-                        'ticketDetailsRoute' => 'ticket-details',
+                        'ticketDetailsRoute' => '#',
                     ])
                 @endforeach
 
             </div>
         </div>
     </div>
+
+    <div class="show-events-carousel also-like">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Discover the Visual Stories</h2>
+                </div>
+                <div class="col-lg-12">
+                    <div class="owl-show-events owl-carousel" style="margin:0%">
+                        @foreach ($event->pictures as $picture)
+                            <div class="item">
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal"
+                                    data-bs-image="{{ asset($picture->picture) }}">
+                                    <img src="{{ asset('front/images/like-01.jpg') }}" alt="{{ $picture->picture }}"
+                                        loading="lazy">
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="imageModalLabel">Event Image</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Modal Image -->
+                                <img id="modalImage" src="" alt="Event Image" class="img-fluid">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Owl Carousel
+            $('.owl-show-events').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 5
+                    }
+                }
+            });
+
+            // JavaScript to handle the modal image change
+            const imageLinks = document.querySelectorAll('[data-bs-toggle="modal"]');
+
+            imageLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    // Get the image URL from the data-bs-image attribute
+                    const imageUrl = this.getAttribute('data-bs-image');
+                    // Update the modal image's src
+                    const modalImage = document.getElementById('modalImage');
+                    modalImage.src = imageUrl;
+                });
+            });
+        });
+    </script>
 @endsection

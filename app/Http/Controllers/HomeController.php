@@ -23,7 +23,7 @@ class HomeController extends Controller
             ->orderBy('date', 'desc') // Order by latest past event
             ->first();
         // dd($mostrecentEventPrevious);
-        return view('home.home', ['mostRecentEvent' => $mostrecentEventPrevious, 'mostrecentEventUpcoming' => $mostrecentEventUpcoming, 'mostrecentEventPrevious' => $mostrecentEventPrevious, 'events' => $events, 'clubs' => $clubs, 'discoverMores' => $discoverMore]);
+        return view('home.home', ['mostRecentEvent' => $mostrecentEventPrevious ? $mostrecentEventPrevious : $mostrecentEventUpcoming, 'mostrecentEventUpcoming' => $mostrecentEventUpcoming, 'mostrecentEventPrevious' => $mostrecentEventPrevious, 'events' => $events, 'clubs' => $clubs, 'discoverMores' => $discoverMore]);
     }
 
 

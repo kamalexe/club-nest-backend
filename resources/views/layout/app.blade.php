@@ -9,7 +9,7 @@
         href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
         rel="stylesheet">
 
-    <title>ArtXibition HTML Event Template</title>
+    <title>ClubNest HTML Event Template</title>
 
 
     <!-- Additional CSS Files -->
@@ -168,7 +168,7 @@
                 </div>
                 <div class="col-lg-6 col-sm-6">
                     <div class="text-button">
-                        <a href="/#subscribe">Contact Us Now! <i class="fa fa-arrow-right"></i></a>
+                        <a href="{{ Route('contactus') }}">Contact Us Now! <i class="fa fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -182,7 +182,7 @@
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="/" class="logo">Art<em>Xibition</em></a>
+                        <a href="/" class="logo">Club<em>Nest</em></a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
@@ -194,17 +194,17 @@
                                     class="{{ request()->routeIs('about') ? 'active' : '' }}">About Us</a>
                             </li>
                             <li>
-                                <a href="{{ route('event-details') }}"
-                                    class="{{ request()->routeIs('event-details') ? 'active' : '' }}">Event Details</a>
+                                <a href="{{ route('events.index') }}"
+                                    class="{{ request()->routeIs('events.index') ? 'active' : '' }}">Shows & Events</a>
                             </li>
                             <li>
-                                <a href="#" class="{{ request()->routeIs('shows-events') ? 'active' : '' }}">Shows
-                                    & Events
+                                <a href="{{ route('club.index') }}"
+                                    class="{{ request()->routeIs('club.index') ? 'active' : '' }}">Our Nest
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('tickets.index') }}"
-                                    class="{{ request()->routeIs('ticketstickets.index') ? 'active' : '' }}">Tickets</a>
+                                    class="{{ request()->routeIs('tickets.index') ? 'active' : '' }}">Tickets</a>
                             </li>
                         </ul>
 
@@ -258,8 +258,8 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="address">
-                        <h4>Sunny Hill Festival Address</h4>
-                        <span>5 College St NW, <br>Norcross, GA 30071<br>United States</span>
+                        <h4>Institute of Engineering & Technology</h4>
+                        <span>Kandari, Agra,<br> Uttar Pradesh, India</span>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -288,13 +288,13 @@
                     <div class="under-footer">
                         <div class="row">
                             <div class="col-lg-6 col-sm-6">
-                                <p>São Conrado, Rio de Janeiro</p>
+                                <p>Dr Bhimrao Ambedkar University, Agra</p>
                             </div>
                             <div class="col-lg-6 col-sm-6">
-                                <p class="copyright">Copyright 2021 ArtXibition Company
+                                <p class="copyright">Copyright 2024 ClubNest
 
-                                    <br>Design: <a rel="nofollow" href="https://www.tooplate.com"
-                                        target="_parent">Tooplate</a>
+                                    <br>Design: <a rel="nofollow" href="https://ietagra.org/" target="_parent">IET
+                                        Khandari</a>
                                 </p>
                             </div>
                         </div>
@@ -304,16 +304,15 @@
                     <div class="sub-footer">
                         <div class="row">
                             <div class="col-lg-3">
-                                <div class="logo"><span>Art<em>Xibition</em></span></div>
+                                <div class="logo"><span>Club<em>Nest</em></span></div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="menu">
                                     <ul>
                                         <li><a href="/" class="active">Home</a></li>
                                         <li><a href="{{ route('about') }}">About Us</a></li>
-                                        <li><a href="{{ route('rent-venue') }}">Rent Venue</a></li>
-                                        <li><a href="{{ route('shows-events') }}">
-                                                Shows & Events</a></li>
+                                        <li><a href="{{ route('events.index') }}">Shows & Events</a></li>
+                                        <li><a href="{{ route('club.index') }}">Our Nest</a></li>
                                         <li><a href="{{ route('tickets.index') }}">Tickets</a></li>
                                     </ul>
                                 </div>

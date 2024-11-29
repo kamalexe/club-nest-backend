@@ -22,7 +22,7 @@ return new class extends Migration
             $table->decimal('ticket_price', 8, 2);
             $table->integer('guests')->nullable();
             $table->timestamps();
-
+            $table->string('picture')->nullable();
             // foreign
             $table->foreign('club_id')->references('id')->on('clubs')->onDelete('cascade');
         });

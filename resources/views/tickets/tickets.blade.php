@@ -80,7 +80,7 @@
                         'eventName' => $ticket->event->name,
                         'eventTime' => $ticket->event->date,
                         'eventLocation' => $ticket->event->location,
-                        'ticketDetailsRoute' => route('ticket-details', $ticket->event->id),
+                        'ticketDetailsRoute' => route('tickets.show', $ticket->event->id),
                     ])
                 @endforeach
 

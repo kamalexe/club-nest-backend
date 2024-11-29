@@ -43,15 +43,15 @@
                                         <div class="col-lg-9">
                                             <div class="right-content">
                                                 <h4>Madison Square Garden</h4>
-                                                <p>ArtXibition Event Template is brought to you by Tooplate website and it
+                                                <p>ClubNest Event Template is brought to you by Tooplate website and it
                                                     included total 7 HTML pages.
                                                     These are <a href="/">Homepage</a>, <a
                                                         href="{{ route('about') }}">About</a>,
-                                                    <a href="{{ route('rent-venue') }}">Rent a venue</a>, <a
-                                                        href="{{ route('shows-events') }}">shows &amp; events</a>,
-                                                    <a href="{{ route('event-details') }}">event details</a>, <a
+                                                    <a href="#">Rent a venue</a>, <a href="#">shows &amp;
+                                                        events</a>,
+                                                    <a href="{{ route('events.index') }}">event details</a>, <a
                                                         href="{{ route('tickets.index') }}">tickets</a>, and <a
-                                                        href="{{ route('ticket-details') }}">ticket details</a>.
+                                                        href="#">ticket details</a>.
                                                     You can feel free to modify any page as you like. If you have any
                                                     question, please visit our <a href="https://www.tooplate.com/contact"
                                                         target="_blank">Contact page</a>.
@@ -76,8 +76,7 @@
                                                 <h5>Any Question?</h5>
                                                 <p>Tumeric air affogato sare torial waistcoat denim stumber.</p>
                                                 <div class="text-button">
-                                                    <a href="{{ route('ticket-details') }}">Need Direction? <i
-                                                            class="fa fa-arrow-right"></i></a>
+                                                    <a href="#">Need Direction? <i class="fa fa-arrow-right"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -109,8 +108,7 @@
                                                 <h5>Any Question?</h5>
                                                 <p>Tumeric air affogato sare torial waistcoat denim stumber.</p>
                                                 <div class="text-button">
-                                                    <a href="{{ route('ticket-details') }}">Need Direction? <i
-                                                            class="fa fa-arrow-right"></i></a>
+                                                    <a href="#">Need Direction? <i class="fa fa-arrow-right"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -140,8 +138,7 @@
                                                 <h5>Any Question?</h5>
                                                 <p>Tumeric air affogato sare torial waistcoat denim stumber.</p>
                                                 <div class="text-button">
-                                                    <a href="{{ route('ticket-details') }}">Need Direction? <i
-                                                            class="fa fa-arrow-right"></i></a>
+                                                    <a href="#">Need Direction? <i class="fa fa-arrow-right"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -159,7 +156,7 @@
             <div class="row">
                 <div class="col-lg-9">
                     <div class="heading-text">
-                        <h4>Reservation Application</h4>
+                        <h4>We’re Here to Help</h4>
                     </div>
                     <div class="contact-form">
                         <form id="contact" action="" method="post">
@@ -184,38 +181,26 @@
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <fieldset>
-                                        <input name="company-organization" type="text" id="company-organization"
-                                            placeholder="Company / Organization*" required="">
+                                        <input name="course" type="text" id="course" placeholder="Course*"
+                                            required="">
                                     </fieldset>
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <fieldset>
-                                        <input name="venue-requested" type="text" id="venue-requested"
-                                            placeholder="Venue Requested*" required="">
+                                        <input name="branch" type="text" id="branch" placeholder="Branch*"
+                                            required="">
                                     </fieldset>
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <fieldset>
-                                        <input name="type-event" type="text" id="type-event"
-                                            placeholder="Type Of Event*" required="">
+                                        <input name="subject" type="text" id="subject" placeholder="Subject*"
+                                            required="">
                                     </fieldset>
                                 </div>
-                                <div class="col-md-6 col-sm-12">
-                                    <fieldset>
-                                        <input name="date-requested-first" type="text" id="date-requested-first"
-                                            placeholder="Date Requested (Primary Date)*" required="">
-                                    </fieldset>
-                                </div>
-                                <div class="col-md-6 col-sm-12">
-                                    <fieldset>
-                                        <input name="date-requested-second" type="text" id="date-requested-second"
-                                            placeholder="Date Requested (Secondary Date)*" required="">
-                                    </fieldset>
-                                </div>
+
                                 <div class="col-lg-12">
                                     <fieldset>
-                                        <textarea name="about-event-hosting" rows="6" id="about-event-hosting"
-                                            placeholder="About The Event You Are Hosting" required=""></textarea>
+                                        <textarea name="message" rows="6" id="message" placeholder="Write your message..." required=""></textarea>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-12">

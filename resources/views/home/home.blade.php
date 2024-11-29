@@ -5,9 +5,14 @@
 
     <div class="main-banner">
         @php
-            $hasEvent = $mostRecentEvent;
+            $recentEvent = $mostrecentEventUpcoming ? $mostrecentEventUpcoming : $mostrecentEventPrevious;
+            // $recentEvent = $mostrecentEventPrevious ? $mostrecentEventPrevious : $mostrecentEventUpcoming;
+            $date = $recentEvent->date;
+            $time = $recentEvent->time;
+            $eventDateTime = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', "{$date} {$time}");
+            $isEventEnded = $eventDateTime->isPast();
         @endphp
-        @if ($hasEvent)
+        @if ($recentEvent)
             <div class="counter-content">
                 <ul>
                     <li>Days<span id="days"></span></li>
@@ -17,24 +22,55 @@
                 </ul>
 
             </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const second = 1000,
+                        minute = second * 60,
+                        hour = minute * 60,
+                        day = hour * 24;
+
+                    // Set countdown date from PHP
+                    let countDownDate = new Date("{{ $date }} {{ $time }}").getTime();
+
+                    // Update the countdown every second
+                    let x = setInterval(function() {
+                        let now = new Date().getTime(),
+                            distance = countDownDate - now;
+
+                        document.getElementById('days').innerText = Math.floor(distance / day);
+                        document.getElementById('hours').innerText = Math.floor((distance % day) / hour);
+                        document.getElementById('minutes').innerText = Math.floor((distance % hour) / minute);
+                        document.getElementById('seconds').innerText = Math.floor((distance % minute) / second);
+
+                        // Stop countdown if the event is over
+                        if (distance < 0) {
+                            clearInterval(x);
+                            const eventMessage = {!! json_encode($isEventEnded) !!} ?
+                                "The event has ended!" :
+                                "The event has started!";
+                            document.querySelector('.counter-content').innerHTML =
+                                `<p class='h2 text-white'>${eventMessage}</p>`;
+                        }
+                    }, 1000);
+                });
+            </script>
         @endif
 
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="main-content">
-                        @if ($hasEvent)
+                        @if ($recentEvent)
                             <div class="next-show">
                                 <i class="fa fa-arrow-up"></i>
-                                <span>Next Show</span>
+                                <span>{{ $isEventEnded ? 'Last Show' : 'Next Show' }}</span>
                             </div>
-                            <h6>Opening on Thursday, March 31st</h6>
+                            <h6>Opening on {{ $recentEvent->formattedDate }}</h6>
                         @endif
-                        <h2>{{ $hasEvent ? $mostRecentEvent->name : 'Welcome To Club-Nest' }}</h2>
-                        </h2>
+                        <h2>{{ $recentEvent ? $recentEvent->name : 'Welcome To Club-Nest' }}</h2>
                         <div class="main-white-button">
                             <a
-                                href={{ $hasEvent ? 'https://www.paytmbank.com/' : '#' }}>{{ $hasEvent ? 'Tickets' : 'Explore Our Club' }}</a>
+                                href={{ route('events.show', $recentEvent->id) }}>{{ $isEventEnded ? 'Explore Our Club' : 'Tickets' }}</a>
                         </div>
                     </div>
                 </div>
@@ -71,10 +107,10 @@
                 <div class="col-lg-9">
                     <div class="left-content">
                         <h4>Three Amazing Venues for events</h4>
-                        <p>ArtXibition Event Template is brought to you by Tooplate website and it included total 7 HTML
+                        <p>ClubNest Event Template is brought to you by Tooplate website and it included total 7 HTML
                             pages.
                             These are <a href="index.html">Homepage</a>, <a href="about.html">About</a>,
-                            <a href="rent-venue.html">Rent a venue</a>, <a href="shows-events.html">shows &amp;
+                            <a href="#">Rent a venue</a>, <a href="#">shows &amp;
                                 events</a>,
                             <a href="event-details.html">event details</a>, <a href="tickets.html">tickets</a>, and <a
                                 href="#">ticket details</a>.
@@ -92,8 +128,8 @@
                 <div class="col-lg-3">
                     <div class="right-content">
                         <h5><i class="fa fa-map-marker"></i> Visit Us</h5>
-                        <span>5 College St NW, <br>Norcross, GA 30071<br>United States</span>
-                        <div class="text-button"><a href="show-events-details.html">Need Directions? <i
+                        <span>IET Khandari, <br>Agra, Uttar Pradesh<br>India</span>
+                        <div class="text-button"><a href="https://maps.app.goo.gl/mb1yCEZbDiKE28MU9">Need Directions? <i
                                     class="fa fa-arrow-right"></i></a></div>
                     </div>
                 </div>
@@ -114,7 +150,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-heading">
-                        <h2>Our Popular Clubs</h2>
+                        <h2>Our Popular Nest</h2>
                     </div>
                 </div>
                 @foreach ($clubs as $club)
@@ -125,7 +161,7 @@
                         'ticketsSold' => 799,
                         'maxCapacity' => 2131,
                         'ticketPrice' => 0344,
-                        'urlPath' => route('showVenueTicket', $club->id),
+                        'urlPath' => route('club.show', $club->id),
                     ])
                 @endforeach
             </div>
@@ -137,7 +173,7 @@
     <div class="coming-events">
         <div class="left-button">
             <div class="main-white-button">
-                <a href="{{ route('event-details') }}">Popular Events</a>
+                <a href="{{ route('events.index') }}">Popular Events</a>
             </div>
         </div>
         <div class="container">

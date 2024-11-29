@@ -28,15 +28,15 @@ class VenueController extends Controller
         //
     }
 
-    public function showVenueTicket(string $id)
-    {
+    // public function showVenueTicket(string $id)
+    // {
 
-        $club = Club::find($id);
-        $events = $club->events;
-        $upCommingEvents = $events->where('date', '>', Carbon::now()->toDateString());
-        $pastEvents = $events->where('date', '<=', Carbon::now()->toDateString());
-        return view('shows_events.shows-events', compact('club', 'pastEvents', 'upCommingEvents'));
-    }
+    //     $club = Club::find($id);
+    //     $events = $club->events;
+    //     $upCommingEvents = $events->where('date', '>', Carbon::now()->toDateString());
+    //     $pastEvents = $events->where('date', '<=', Carbon::now()->toDateString());
+    //     return view('shows_events.shows-events', compact('club', 'pastEvents', 'upCommingEvents'));
+    // }
     public function edit(string $id)
     {
         //

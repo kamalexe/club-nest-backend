@@ -6,7 +6,7 @@
                     <h4>{{ $eventName }}</h4>
                     <p>{{ $eventDescription }}</p>
                     <div class="main-dark-button">
-                        <a href="{{ route($eventDetailsRoute) }}">Discover More</a>
+                        <a href="{{ $eventDetailsRoute }}">Discover More</a>
                     </div>
                 </div>
             </div>

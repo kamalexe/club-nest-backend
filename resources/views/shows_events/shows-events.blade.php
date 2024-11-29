@@ -101,7 +101,7 @@
                                                             'eventLocation' => $event->location,
                                                             'eventGuests' => $event->max_capacity,
                                                             'eventDetailsRoute' => 'event-details',
-                                                            'ticketPurchaseRoute' => 'ticket-details',
+                                                            'ticketPurchaseRoute' => '#',
                                                         ])
                                                     @endforeach
                                                 @endif
@@ -174,7 +174,7 @@
                                                         'eventGuests' => $event->max_capacity,
                                                         'eventDetailsRoute' => 'event-details',
                                                     
-                                                        'ticketPurchaseRoute' => route('ticket-details', $event->id),
+                                                        'ticketPurchaseRoute' => route('tickets.show', $event->id),
                                                     ])
                                                 @endforeach
 

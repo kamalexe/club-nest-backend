@@ -26,7 +26,8 @@ class EventController extends Controller
     public function show(Event $event)
     {
         $event->load('club');
-        return view('ticket_details.ticket-details', ['event' => $event,]);
+        $events = Event::paginate(10);
+        return view('ticket_details.ticket-details', ['event' => $event, 'events' => $events]);
     }
     public function edit(string $id)
     {
