@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Club;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -10,8 +11,9 @@ class ClubController extends Controller
 {
     public function index()
     {
-        $club = Club::paginate(10);
-        return view('club.club-index', ['clubs' => $club]);
+        $clubs = Club::paginate(10);
+
+        return view('club.club-index', ['clubs' => $clubs]);
     }
 
     public function create()
@@ -29,7 +31,7 @@ class ClubController extends Controller
         $events = $club->events;
         $upCommingEvents = $events->where('date', '>', Carbon::now()->toDateString());
         $pastEvents = $events->where('date', '<=', Carbon::now()->toDateString());
-        return view('shows_events.shows-events', compact('club', 'pastEvents', 'upCommingEvents'));
+        return view('shows_events.shows-events', compact('club', 'events', 'pastEvents', 'upCommingEvents'));
     }
 
     public function edit(Club $club)

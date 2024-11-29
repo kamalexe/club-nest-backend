@@ -12,180 +12,59 @@
             </div>
         </div>
     </div>
+    {{--  --}}
+    <div class="about-upcoming-shows">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <h2>Welcome to {{ $club->name }}</h2>
 
-    <div class="shows-events-tabs">
+                    <p>{{ $club->description }}</p>
+                </div>
+
+                <div class="col-lg-3">
+                    <section class='tabs-content'>
+                        <article id='tabs-1'>
+                            <div class="next-shows">
+                                <h4><i class="fa fa-clock-o"></i> Get The Next Show Tickets</h4>
+                                <ul>
+                                    @foreach ($events as $event)
+                                        @livewire('small-get-the-next-show-ticket', [
+                                            'eventName' => $event->name,
+                                            'eventDate' => $event->formattedDate1,
+                                            'eventTime' => '08:30 AM - 11:00 PM',
+                                            'ticketRoute' => '#',
+                                        ])
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </article>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{--  --}}
+
+    <div class="also-like">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="row" id="tabs">
-                        <div class="col-lg-12">
-                            <div class="heading-tabs">
-                                <div class="row">
-                                    <div class="col-lg-8">
-                                        <ul>
-                                            <li><a href='#tabs-1'>Upcoming</a></li>
-                                            <li><a href='#tabs-2'>Past</a></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="main-dark-button">
-                                            <a href="https://www.paytmbank.com/">Purchase Tickets</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <section class='tabs-content'>
-                                <article id='tabs-1'>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="heading">
-                                                <h2>Upcoming</h2>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <div class="sidebar">
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <div class="heading-sidebar">
-                                                            <h4>Sort The Upcoming Shows & Events By:</h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="month">
-                                                            <h6>Month</h6>
-                                                            <ul>
-                                                                <li><a href="#">July</a></li>
-                                                                <li><a href="#">August</a></li>
-                                                                <li><a href="#">September</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="category">
-                                                            <h6>Category</h6>
-                                                            <ul>
-                                                                <li><a href="#">Pop Music</a></li>
-                                                                <li><a href="#">Rock Music</a></li>
-                                                                <li><a href="#">Hip Hop Music</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="venues">
-                                                            <h6>Venues</h6>
-                                                            <ul>
-                                                                <li><a href="#">Radio City Musical Hall</a></li>
-                                                                <li><a href="#">Madison Square Garden</a></li>
-                                                                <li><a href="#">Royce Hall</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-9">
-
-                                            <div class="row">
-                                                @if ($upCommingEvents->isEmpty())
-                                                    <h1>No upcoming events.</h1>
-                                                @else
-                                                    @foreach ($upCommingEvents as $event)
-                                                        @livewire('small-our-shows-events', [
-                                                            'eventName' => $event->name,
-                                                            'eventDescription' => $event->description,
-                                                            'eventImage' => 'front/images/about-map-image.jpg',
-                                                            // 'eventImage' => $event->image,
-                                                            'eventDate' => $event->date,
-                                                            'eventLocation' => $event->location,
-                                                            'eventGuests' => $event->max_capacity,
-                                                            'eventDetailsRoute' => 'event-details',
-                                                            'ticketPurchaseRoute' => '#',
-                                                        ])
-                                                    @endforeach
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                                <article id='tabs-2'>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="heading">
-                                                <h2>Upcoming</h2>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <div class="sidebar">
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <div class="heading-sidebar">
-                                                            <h4>Sort The Upcoming Shows & Events By:</h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="month">
-                                                            <h6>Month</h6>
-                                                            <ul>
-                                                                <li><a href="#">July</a></li>
-                                                                <li><a href="#">August</a></li>
-                                                                <li><a href="#">September</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="category">
-                                                            <h6>Category</h6>
-                                                            <ul>
-                                                                <li><a href="#">Pop Music</a></li>
-                                                                <li><a href="#">Rock Music</a></li>
-                                                                <li><a href="#">Hip Hop Music</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="venues">
-                                                            <h6>Venues</h6>
-                                                            <ul>
-                                                                <li><a href="#">Radio City Musical Hall</a></li>
-                                                                <li><a href="#">Madison Square Garden</a></li>
-                                                                <li><a href="#">Royce Hall</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-9">
-
-                                            @if ($pastEvents->isEmpty())
-                                                <h1>No past events.</h1>
-                                            @else
-                                                @foreach ($pastEvents as $event)
-                                                    @livewire('small-our-shows-events', [
-                                                        'eventName' => $event->name,
-                                                        'eventDescription' => $event->description,
-                                                        'eventImage' => 'front/images/about-map-image.jpg',
-                                                        // 'eventImage' => $event->image,
-                                                        'eventDate' => $event->date,
-                                                        'eventLocation' => $event->location,
-                                                        'eventGuests' => $event->max_capacity,
-                                                        'eventDetailsRoute' => 'event-details',
-                                                    
-                                                        'ticketPurchaseRoute' => route('tickets.show', $event->id),
-                                                    ])
-                                                @endforeach
-
-                                        </div>
-                                        @endif
-                                    </div>
-                                </article>
-                            </section>
-                        </div>
-                    </div>
+                    <h2>Meet Our Members...</h2>
                 </div>
+                @foreach ($event->club->clubMembers as $members)
+                    @livewire('small-you-might-also-like', [
+                        // 'eventImage' => $members->image,
+                        'eventImage' => 'front/images/about-map-image.jpg',
+                        'eventDateRange' => $members->email,
+                        'eventName' => $members->name,
+                        //  'eventDetailsRoute' => 'event-details',
+                        'eventDetailsRoute' => '#',
+                        'ticketDetailsRoute' => '#',
+                    ])
+                @endforeach
+
             </div>
         </div>
     </div>

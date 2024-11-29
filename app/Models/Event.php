@@ -48,6 +48,13 @@ class Event extends Model
             set: fn($value) => \Carbon\Carbon::createFromFormat('Y-m-d', $value)->toDateString() // Ensure stored format is 'Y-m-d'
         );
     }
+    protected function formattedDate1(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value, $attributes) => \Carbon\Carbon::parse($attributes['date'])->format('F jS'), // Example: Thursday, March 31st, 2022
+            set: fn($value) => \Carbon\Carbon::createFromFormat('Y-m-d', $value)->toDateString() // Ensure stored format is 'Y-m-d'
+        );
+    }
 
     protected function formattedTime(): Attribute
     {
