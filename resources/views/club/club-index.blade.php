@@ -72,14 +72,17 @@
 
 
                 @foreach ($clubs as $club)
-                    @livewire('small-tickets-page-card', [
+                    {{-- @foreach ($club->inchargeMember as $incharge)
+                        <h1>{{ $incharge->name }}</h1>
+                    @endforeach --}}
+
+                    @livewire('small-club-card', [
                         'image' => 'front/images/ticket-01.jpg',
                         // 'image' => $ticket->event->image,
-                        'price' => 78,
-                        'ticketsLeft' => 675,
-                        'eventName' => $club->name,
-                        'eventTime' => 0,
-                        'eventLocation' => $club->description,
+                        'memberCount' => $club->clubMembers->count() ?? 0,
+                        'name' => $club->name,
+                        'incharge' => $club->inchargeMember()->name,
+                        'eventCount' => $club->events->count(),
                         'ticketDetailsRoute' => route('club.show', $club->id),
                     ])
                 @endforeach
