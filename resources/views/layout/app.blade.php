@@ -202,10 +202,6 @@
                                     class="{{ request()->routeIs('club.index') ? 'active' : '' }}">Our Nest
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{ route('tickets.index') }}"
-                                    class="{{ request()->routeIs('tickets.index') ? 'active' : '' }}">Tickets</a>
-                            </li>
                         </ul>
 
                         <a class='menu-trigger'>
@@ -313,7 +309,6 @@
                                         <li><a href="{{ route('about') }}">About Us</a></li>
                                         <li><a href="{{ route('events.index') }}">Shows & Events</a></li>
                                         <li><a href="{{ route('club.index') }}">Our Nest</a></li>
-                                        <li><a href="{{ route('tickets.index') }}">Tickets</a></li>
                                     </ul>
                                 </div>
                             </div>

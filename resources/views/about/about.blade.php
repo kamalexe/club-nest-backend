@@ -133,14 +133,14 @@
                 </div>
 
                 @livewire('small-you-might-also-like', [
-                    'eventImage' => 'front/images/like-01.jpg',
+                    'eventImage' => 'front/images/icon-person.png',
                     'eventDateRange' => 'Sept 10 to 14, 2021',
-                    'eventName' => 'Wonder Land Music and Arts Festival',
+                    'eventName' => 'Prahsnat Maharshi',
                     'eventDetailsRoute' => 'event-details',
                     'ticketDetailsRoute' => '#',
                 ])
                 @livewire('small-you-might-also-like', [
-                    'eventImage' => 'front/images/like-02.jpg',
+                    'eventImage' => 'front/images/icon-person.png',
                     'eventDateRange' => 'Oct 11 to 16, 2021',
                     'eventName' => 'Big Water Splashing Festival',
                     'eventDetailsRoute' => 'event-details',
@@ -148,13 +148,13 @@
                 ])
 
                 @livewire('small-you-might-also-like', [
-                    'eventImage' => 'front/images/like-03.jpg',
+                    'eventImage' => 'front/images/icon-person.png',
                     'eventDateRange' => 'Nov 10 to 18, 2021',
                     'eventName' => 'Tiger Dance Hip Hop Festival',
                     'eventDetailsRoute' => 'event-details',
                     'ticketDetailsRoute' => '#',
                 ]) @livewire('small-you-might-also-like', [
-                    'eventImage' => 'front/images/like-02.jpg',
+                    'eventImage' => 'front/images/icon-person.png',
                     'eventDateRange' => 'Oct 11 to 16, 2021',
                     'eventName' => 'Big Water Splashing Festival',
                     'eventDetailsRoute' => 'event-details',
@@ -162,7 +162,7 @@
                 ])
 
                 @livewire('small-you-might-also-like', [
-                    'eventImage' => 'front/images/like-03.jpg',
+                    'eventImage' => 'front/images/icon-person.png',
                     'eventDateRange' => 'Nov 10 to 18, 2021',
                     'eventName' => 'Tiger Dance Hip Hop Festival',
                     'eventDetailsRoute' => 'event-details',

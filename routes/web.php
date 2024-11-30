@@ -16,4 +16,3 @@ Route::view('/about', 'about.about')->name('about');
 Route::view('/contactus', 'contactus.contactus')->name('contactus');
 Route::resource('events', EventController::class);
 Route::resource('club', ClubController::class);
-Route::resource('/tickets', TicketController::class);
