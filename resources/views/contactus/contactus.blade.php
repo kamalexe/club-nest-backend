@@ -50,7 +50,7 @@
                                                     <a href="#">Rent a venue</a>, <a href="#">shows &amp;
                                                         events</a>,
                                                     <a href="{{ route('events.index') }}">event details</a>, <a
-                                                        href="#">tickets</a>, and <a
+                                                        href="{{ route('tickets.index') }}">tickets</a>, and <a
                                                         href="#">ticket details</a>.
                                                     You can feel free to modify any page as you like. If you have any
                                                     question, please visit our <a href="https://www.tooplate.com/contact"

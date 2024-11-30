@@ -56,7 +56,7 @@
                 @foreach ($event->club->clubMembers as $members)
                     @livewire('small-you-might-also-like', [
                         // 'eventImage' => $members->image,
-                        'eventImage' => 'front/images/icon-person.png',
+                        'eventImage' => 'front/images/about-map-image.jpg',
                         'eventDateRange' => $members->email,
                         'eventName' => $members->name,
                         //  'eventDetailsRoute' => 'event-details',
