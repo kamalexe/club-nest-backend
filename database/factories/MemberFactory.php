@@ -22,13 +22,29 @@ class MemberFactory extends Factory
      */
     public function definition()
     {
-        // Ensure one member per club is marked as in charge
-        static $incharge = false;  // Keeps track of whether incharge is already assigned
+
+        static $incharge = false;
+        $posts = [
+            'President',
+            'Vice President',
+            'Secretary',
+            'Treasurer',
+            'Event Coordinator',
+            'Social Media Manager',
+            'Public Relations Officer',
+            'Member',
+            'Marketing Head',
+            'Creative Head',
+            'Technical Head',
+            'Sports Coordinator',
+            'Cultural Head',
+            'Club Incharge'
+        ];
 
         return [
             'name' => $this->faker->name,
-            'post' => $this->faker->word,  // Can be changed as needed
-            'incharge' => $incharge ? false : $this->faker->boolean, // Set the first member as in charge
+            'post' => $this->faker->randomElement($posts),
+            'incharge' => $incharge ? false : $this->faker->boolean,
             'email' => $this->faker->unique()->safeEmail,
             'image' => $this->faker->imageUrl(),
             'phone' => $this->faker->phoneNumber,

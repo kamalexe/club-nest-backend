@@ -121,15 +121,15 @@
                 <div class="col-lg-12">
                     <h2>Meet Our Members...</h2>
                 </div>
-                @foreach ($event->club->clubMembers as $members)
-                    @livewire('small-you-might-also-like', [
+                @foreach ($event->club->clubMembers as $member)
+                    @livewire('member-card', [
                         // 'eventImage' => $members->image,
-                        'eventImage' => 'front/images/about-map-image.jpg',
-                        'eventDateRange' => $members->email,
-                        'eventName' => $members->name,
-                        //  'eventDetailsRoute' => 'event-details',
-                        'eventDetailsRoute' => '#',
-                        'ticketDetailsRoute' => '#',
+                        // 'eventImage' => 'front/images/about-map-image.jpg',
+                        'member' => $member,
+                        // 'eventName' => $members->name,
+                        // //  'eventDetailsRoute' => 'event-details',
+                        // 'eventDetailsRoute' => '#',
+                        // 'ticketDetailsRoute' => '#',
                     ])
                 @endforeach
 

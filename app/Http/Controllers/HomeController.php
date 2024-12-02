@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Models\Venue;
 use App\Models\Club;
+use App\Models\Faculty;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,50 +15,26 @@ class HomeController extends Controller
     {
         $events = Event::orderBy('date', 'desc')->take(10)->get();
         $clubs = Club::take(3)->get();
-        $discoverMore = Event::orderBy('guests')->take(3)->get();
-        $mostrecentEventUpcoming = Event::where('date', '>', now()) // Filter upcoming events
-            ->orderBy('date', 'asc') // Order by nearest date first
+        $discoverMores = Event::orderBy('guests')->take(3)->get();
+        $mostRecentEventUpcoming = Event::where('date', '>', now())
+            ->orderBy('date', 'asc')
             ->first();
-
-        $mostrecentEventPrevious = Event::where('date', '<', now()) // Filter past events
-            ->orderBy('date', 'desc') // Order by latest past event
+        $mostRecentEventPrevious = Event::where('date', '<', now())
+            ->orderBy('date', 'desc')
             ->first();
-        // dd($mostrecentEventPrevious);
-        return view('home.home', ['mostRecentEvent' => $mostrecentEventPrevious ? $mostrecentEventPrevious : $mostrecentEventUpcoming, 'mostrecentEventUpcoming' => $mostrecentEventUpcoming, 'mostrecentEventPrevious' => $mostrecentEventPrevious, 'events' => $events, 'clubs' => $clubs, 'discoverMores' => $discoverMore]);
+        $recentEvent = $mostRecentEventUpcoming ? $mostRecentEventUpcoming : $mostRecentEventPrevious;
+        return view('home.home', compact('clubs', 'events', 'recentEvent', 'discoverMores'));
     }
 
-
-    public function create()
+    public function about()
     {
-        //
+        $faculties = Faculty::all();
+        $events = Event::orderBy('date', 'desc')->take(5)->get();
+
+        return view('about.about', compact('faculties', 'events'));
     }
-
-
-    public function store(Request $request)
+    public function contact()
     {
-        //
-    }
-
-
-    public function show(string $id)
-    {
-        //
-    }
-
-
-    public function edit(string $id)
-    {
-        //
-    }
-
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-
-    public function destroy(string $id)
-    {
-        //
+        return view('contact.contact');
     }
 }

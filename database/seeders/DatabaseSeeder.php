@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             MemberSeeder::class,
             VolunteerSeeder::class,
             EventPictureSeeder::class,
+            FacultySeeder::class,
         ]);
     }
 }

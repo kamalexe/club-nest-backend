@@ -77,46 +77,12 @@
                     <div class="next-shows">
                         <h4><i class="fa fa-clock-o"></i> Get The Next Show Tickets</h4>
                         <ul>
-                            @livewire('small-get-the-next-show-ticket', [
-                                'eventName' => 'Copacabana Festival',
-                                'eventDate' => 'Sep 24 Fri',
-                                'eventTime' => '08:30 AM - 11:00 PM',
-                                'ticketRoute' => '#',
-                            ])
 
-                            @livewire('small-get-the-next-show-ticket', [
-                                'eventName' => 'Rock Music Festival',
-                                'eventDate' => 'Sep 22 Wed',
-                                'eventTime' => '11:00 AM - 09:00 PM',
-                                'ticketRoute' => '#',
-                            ])
+                            @foreach ($events as $event)
+                                @livewire('small-event-card', ['event' => $event])
+                            @endforeach
 
-                            @livewire('small-get-the-next-show-ticket', [
-                                'eventName' => 'Water Splash Festival',
-                                'eventDate' => 'July 18 Friday',
-                                'eventTime' => '10:00 AM - 11:00 PM',
-                                'ticketRoute' => '#',
-                            ])
-                            @livewire('small-get-the-next-show-ticket', [
-                                'eventName' => 'Copacabana Festival',
-                                'eventDate' => 'Sep 24 Fri',
-                                'eventTime' => '08:30 AM - 11:00 PM',
-                                'ticketRoute' => '#',
-                            ])
 
-                            @livewire('small-get-the-next-show-ticket', [
-                                'eventName' => 'Rock Music Festival',
-                                'eventDate' => 'Sep 22 Wed',
-                                'eventTime' => '11:00 AM - 09:00 PM',
-                                'ticketRoute' => '#',
-                            ])
-
-                            @livewire('small-get-the-next-show-ticket', [
-                                'eventName' => 'Water Splash Festival',
-                                'eventDate' => 'July 18 Friday',
-                                'eventTime' => '10:00 AM - 11:00 PM',
-                                'ticketRoute' => '#',
-                            ])
                         </ul>
                     </div>
                 </div>
@@ -132,43 +98,18 @@
                     <h2>Meet Our Faculty...</h2>
                 </div>
 
-                @livewire('small-you-might-also-like', [
-                    'eventImage' => 'front/images/icon-person.png',
-                    'eventDateRange' => 'Sept 10 to 14, 2021',
-                    'eventName' => 'Prahsnat Maharshi',
-                    'eventDetailsRoute' => 'event-details',
-                    'ticketDetailsRoute' => '#',
-                ])
-                @livewire('small-you-might-also-like', [
-                    'eventImage' => 'front/images/icon-person.png',
-                    'eventDateRange' => 'Oct 11 to 16, 2021',
-                    'eventName' => 'Big Water Splashing Festival',
-                    'eventDetailsRoute' => 'event-details',
-                    'ticketDetailsRoute' => '#',
-                ])
-
-                @livewire('small-you-might-also-like', [
-                    'eventImage' => 'front/images/icon-person.png',
-                    'eventDateRange' => 'Nov 10 to 18, 2021',
-                    'eventName' => 'Tiger Dance Hip Hop Festival',
-                    'eventDetailsRoute' => 'event-details',
-                    'ticketDetailsRoute' => '#',
-                ]) @livewire('small-you-might-also-like', [
-                    'eventImage' => 'front/images/icon-person.png',
-                    'eventDateRange' => 'Oct 11 to 16, 2021',
-                    'eventName' => 'Big Water Splashing Festival',
-                    'eventDetailsRoute' => 'event-details',
-                    'ticketDetailsRoute' => '#',
-                ])
-
-                @livewire('small-you-might-also-like', [
-                    'eventImage' => 'front/images/icon-person.png',
-                    'eventDateRange' => 'Nov 10 to 18, 2021',
-                    'eventName' => 'Tiger Dance Hip Hop Festival',
-                    'eventDetailsRoute' => 'event-details',
-                    'ticketDetailsRoute' => '#',
-                ])
-
+                @foreach ($faculties as $faculty)
+                    @livewire('small-you-might-also-like', [
+                        // 'eventImage' => 'front/images/icon-person.png',
+                        'faculty' => $faculty,
+                        // 'eventImage' => $faculty->image,
+                    
+                        // 'eventDateRange' => $faculty->department,
+                        // 'eventName' => $faculty->name,
+                        // 'eventDetailsRoute' => 'event-details',
+                        // 'ticketDetailsRoute' => '#',
+                    ])
+                @endforeach
             </div>
         </div>
     </div>

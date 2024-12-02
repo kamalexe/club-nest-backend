@@ -12,7 +12,7 @@ use App\Http\Controllers\TicketController;
 // });
 
 Route::get('/', [HomeController::class, 'index']);
-Route::view('/about', 'about.about')->name('about');
-Route::view('/contactus', 'contactus.contactus')->name('contactus');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::resource('events', EventController::class);
 Route::resource('club', ClubController::class);

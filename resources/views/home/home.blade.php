@@ -5,7 +5,7 @@
 
     <div class="main-banner">
         @php
-            $recentEvent = $mostrecentEventUpcoming ? $mostrecentEventUpcoming : $mostrecentEventPrevious;
+            // $recentEvent = $mostrecentEventUpcoming ? $mostrecentEventUpcoming : $mostrecentEventPrevious;
             // $recentEvent = $mostrecentEventPrevious ? $mostrecentEventPrevious : $mostrecentEventUpcoming;
             $date = $recentEvent->date;
             $time = $recentEvent->time;

@@ -168,7 +168,7 @@
                 </div>
                 <div class="col-lg-6 col-sm-6">
                     <div class="text-button">
-                        <a href="{{ Route('contactus') }}">Contact Us Now! <i class="fa fa-arrow-right"></i></a>
+                        <a href="{{ Route('contact') }}">Contact Us Now! <i class="fa fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>

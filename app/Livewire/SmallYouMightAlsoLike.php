@@ -3,22 +3,20 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use App\Models\Faculty;
 
 class SmallYouMightAlsoLike extends Component
 {
-    public $eventImage;
-    public $eventDateRange;
-    public $eventName;
-    public $eventDetailsRoute;
-    public $ticketDetailsRoute;
+    // public $eventImage;
+    // public $eventDateRange;
+    // public $eventName;
+    // public $eventDetailsRoute;
+    // public $ticketDetailsRoute;
 
-    public function mount($eventImage, $eventDateRange, $eventName, $eventDetailsRoute, $ticketDetailsRoute)
+    public Faculty $faculty;
+    public function mount($faculty)
     {
-        $this->eventImage = $eventImage;
-        $this->eventDateRange = $eventDateRange;
-        $this->eventName = $eventName;
-        $this->eventDetailsRoute = $eventDetailsRoute;
-        $this->ticketDetailsRoute = $ticketDetailsRoute;
+        $this->faculty = $faculty;
     }
 
     public function render()

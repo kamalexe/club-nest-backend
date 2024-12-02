@@ -2,19 +2,19 @@
     <div class="like-item">
         <div class="thumb">
 
-            <img src="{{ asset($faculty->image) }}" alt="">
+            <img src="{{ asset($member->image) }}" alt="">
 
             <div class="icons">
                 <ul>
                     <span>
-                        {{ $faculty->post }}
+                        {{ $member->post }}
                     </span>
                 </ul>
             </div>
         </div>
         <div class="down-content">
-            <h4>{{ $faculty->name }}</h4>
-            <span>From department of {{ $faculty->department }}</span>
+            <h4>{{ $member->name }}</h4>
+            <span>You can contact with {{ $member->email }}</span>
         </div>
     </div>
 </div>
