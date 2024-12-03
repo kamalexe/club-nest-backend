@@ -1,7 +1,6 @@
 <?php
 
 namespace Database\Factories;
-use App\Models\Venue;
 use App\Models\Event;
 use App\Models\Club;
 use Illuminate\Support\Str;

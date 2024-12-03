@@ -29,10 +29,6 @@ class Event extends Model
         return $this->belongsTo(Club::class);
     }
 
-    public function tickets()
-    {
-        return $this->hasMany(Ticket::class);
-    }
 
     protected function dayName(): Attribute
     {

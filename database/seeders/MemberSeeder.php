@@ -9,20 +9,11 @@ use App\Models\Club;
 
 class MemberSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run()
     {
         Club::all()->each(function ($club) {
-            Member::factory()->create([
-                'club_id' => $club->id,
-                'incharge' => true, // This member is the in-charge
-            ]);
-            Member::factory()->count(5)->create([
-                'club_id' => $club->id,
-                'incharge' => false, // These members are not in-charge
-            ]);
+            Member::factory()->create(['club_id' => $club->id, 'incharge' => true]);
+            Member::factory()->count(2)->create(['club_id' => $club->id, 'incharge' => false,]);
         });
     }
 }

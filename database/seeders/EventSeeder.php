@@ -16,9 +16,7 @@ class EventSeeder extends Seeder
     {
         $clubs = Club::all();
         foreach ($clubs as $club) {
-            Event::factory(3)->create([
-                'club_id' => $club->id
-            ]);
+            Event::factory(3)->create(['club_id' => $club->id]);
         }
     }
 }

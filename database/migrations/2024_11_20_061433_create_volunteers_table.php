@@ -6,9 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
     public function up(): void
     {
         Schema::create('volunteers', function (Blueprint $table) {
@@ -16,7 +14,7 @@ return new class extends Migration
             $table->unsignedBigInteger('club_id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('role')->nullable(); // e.g., "Coordinator", "Helper"
+            $table->string('role')->nullable();
             $table->timestamps();
 
             // foreign
@@ -24,9 +22,6 @@ return new class extends Migration
      });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('volunteers');

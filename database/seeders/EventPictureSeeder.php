@@ -17,7 +17,7 @@ class EventPictureSeeder extends Seeder
         $events = Event::all();
 
         foreach ($events as $event) {
-            EventPicture::factory(5)->create(['event_id' => $event->id]);
+            EventPicture::factory(2)->create(['event_id' => $event->id]);
         }
     }
 }

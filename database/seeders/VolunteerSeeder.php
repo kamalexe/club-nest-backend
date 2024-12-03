@@ -15,11 +15,8 @@ class VolunteerSeeder extends Seeder
     public function run(): void
     {
         $clubs = Club::all();
-
         foreach ($clubs as $club) {
-            Volunteer::factory(2)->create([
-                'club_id' => $club->id
-            ]);
+            Volunteer::factory(2)->create(['club_id' => $club->id]);
         }
     }
 }

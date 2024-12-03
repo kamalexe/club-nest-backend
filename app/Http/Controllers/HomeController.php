@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
-use App\Models\Venue;
 use App\Models\Club;
 use App\Models\Faculty;
 use Illuminate\Http\Request;
