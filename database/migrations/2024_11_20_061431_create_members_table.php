@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('post');
             $table->boolean('incharge')->default(false);
             $table->string('email')->unique();
-            $table->string('phone')->nullable();
-            $table->string('image')->nullable();
+            $table->string('phone');
+            $table->string('image');
             $table->timestamps();
 
             // Foreign key constraint for club_id (referencing the 'id' field on the 'clubs' table)

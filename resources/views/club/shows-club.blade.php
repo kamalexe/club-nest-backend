@@ -12,7 +12,10 @@
             </div>
         </div>
     </div>
-    {{--  --}}
+
+
+
+
     <div class="about-upcoming-shows">
         <div class="container">
             <div class="row">
@@ -55,4 +58,45 @@
             </div>
         </div>
     </div>
+
+    <!-- *** Owl Carousel Items ***-->
+    <div class="section" style="margin-bottom: 50px">
+        <div class="show-events-carousel">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="owl-show-events owl-carousel">
+                            @foreach ($event->club->volunteers as $volunteers)
+                                <div class="item">
+                                    <a href="">
+                                        <img src={{ $volunteers->image }} alt="" loading="lazy">
+
+                                        {{-- {{ $volunteers->name }} --}}
+                                        {{-- <img src="https://picsum.photos/200/200" alt="" loading="lazy"> --}}
+                                    </a>
+                                </div>
+                            @endforeach
+
+                            {{-- <div class="item">
+                                <a href="">
+                                    <img src="https://picsum.photos/200/200" alt="" loading="lazy">
+                                </a>
+                            </div>
+                            <div class="item">
+                                <a href="">
+                                    <img src="https://picsum.photos/200/200" alt="" loading="lazy">
+                                </a>
+                            </div>
+                            <div class="item">
+                                <a href="">
+                                    <img src="https://picsum.photos/200/200" alt="" loading="lazy">
+                                </a>
+                            </div> --}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{--  --}}
 @endsection

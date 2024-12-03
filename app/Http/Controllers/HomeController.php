@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Models\Club;
 use App\Models\Faculty;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -22,7 +23,14 @@ class HomeController extends Controller
             ->orderBy('date', 'desc')
             ->first();
         $recentEvent = $mostRecentEventUpcoming ? $mostRecentEventUpcoming : $mostRecentEventPrevious;
-        return view('home.home', compact('clubs', 'events', 'recentEvent', 'discoverMores'));
+        $recentEventDate = $recentEvent->date ?? null;
+        $recentEventTime = $recentEvent->time ?? '00:00:00';
+        $recentEventDateTime = $recentEventDate
+            ? Carbon::createFromFormat('Y-m-d H:i:s', "{$recentEventDate} {$recentEventTime}")
+            : null;
+
+        $isRecentEventEnded = $recentEventDateTime ? $recentEventDateTime->isPast() : true;
+        return view('home.home', compact('clubs', 'events', 'recentEvent', 'discoverMores', 'isRecentEventEnded'));
     }
 
     public function about()

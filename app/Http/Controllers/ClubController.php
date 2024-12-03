@@ -29,9 +29,7 @@ class ClubController extends Controller
     {
         $club = Club::find($id);
         $events = $club->events;
-        $upCommingEvents = $events->where('date', '>', Carbon::now()->toDateString());
-        $pastEvents = $events->where('date', '<=', Carbon::now()->toDateString());
-        return view('shows_events.shows-events', compact('club', 'events', 'pastEvents', 'upCommingEvents'));
+        return view('club.shows-club', compact('club', 'events'));
     }
 
     public function edit(Club $club)

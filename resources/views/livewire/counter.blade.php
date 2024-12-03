@@ -3,7 +3,7 @@
         <div class="col-lg-3">
             <div class="title">
                 <h4 class="max-lines">{{ $event->name }}</h4>
-                <span>{{ $event->tickets->count() }} Tickets Available</span>
+                <span>{{ $event->max_capacity }} Tickets Available</span>
             </div>
         </div>
         <div class="col-lg-3">

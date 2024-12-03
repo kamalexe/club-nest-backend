@@ -12,7 +12,7 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('club_id');
-            $table->string('image')->nullable();
+            $table->string('image');
             $table->string('name');
             $table->text('description');
             $table->date('date');
@@ -20,9 +20,8 @@ return new class extends Migration
             $table->integer('max_capacity');
             $table->string('location');
             $table->decimal('ticket_price', 8, 2);
-            $table->integer('guests')->nullable();
+            $table->integer('guests');
             $table->timestamps();
-            $table->string('picture')->nullable();
             // foreign
             $table->foreign('club_id')->references('id')->on('clubs')->onDelete('cascade');
         });

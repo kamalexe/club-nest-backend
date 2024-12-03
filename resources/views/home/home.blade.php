@@ -4,12 +4,7 @@
     <!-- ***** Main Banner Area Start ***** -->
 
     <div class="main-banner">
-        @php
-            $date = $recentEvent->date;
-            $time = $recentEvent->time;
-            $eventDateTime = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', "{$date} {$time}");
-            $isEventEnded = $eventDateTime->isPast();
-        @endphp
+
         @if ($recentEvent)
             <div class="counter-content">
                 <ul>
@@ -18,7 +13,6 @@
                     <li>Minutes<span id="minutes"></span></li>
                     <li>Seconds<span id="seconds"></span></li>
                 </ul>
-
             </div>
             <script>
                 document.addEventListener('DOMContentLoaded', function() {
@@ -28,7 +22,7 @@
                         day = hour * 24;
 
                     // Set countdown date from PHP
-                    let countDownDate = new Date("{{ $date }} {{ $time }}").getTime();
+                    let countDownDate = new Date("{{ $recentEvent->date }} {{ $recentEvent->time }}").getTime();
 
                     // Update the countdown every second
                     let x = setInterval(function() {
@@ -43,7 +37,7 @@
                         // Stop countdown if the event is over
                         if (distance < 0) {
                             clearInterval(x);
-                            const eventMessage = {!! json_encode($isEventEnded) !!} ?
+                            const eventMessage = {!! json_encode($isRecentEventEnded) !!} ?
                                 "The event has ended!" :
                                 "The event has started!";
                             document.querySelector('.counter-content').innerHTML =
@@ -61,14 +55,14 @@
                         @if ($recentEvent)
                             <div class="next-show">
                                 <i class="fa fa-arrow-up"></i>
-                                <span>{{ $isEventEnded ? 'Last Show' : 'Next Show' }}</span>
+                                <span>{{ $isRecentEventEnded ? 'Last Show' : 'Next Show' }}</span>
                             </div>
                             <h6>Opening on {{ $recentEvent->formattedDate }}</h6>
                         @endif
                         <h2>{{ $recentEvent ? $recentEvent->name : 'Welcome To Club-Nest' }}</h2>
                         <div class="main-white-button">
                             <a
-                                href={{ route('events.show', $recentEvent->id) }}>{{ $isEventEnded ? 'Explore Our Club' : 'Tickets' }}</a>
+                                href={{ route('events.show', $recentEvent->id) }}>{{ $isRecentEventEnded ? 'Explore Our Club' : 'Tickets' }}</a>
                         </div>
                     </div>
                 </div>

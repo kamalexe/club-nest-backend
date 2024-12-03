@@ -14,12 +14,12 @@ return new class extends Migration
             $table->unsignedBigInteger('club_id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('role')->nullable();
+            $table->string('role');
             $table->timestamps();
 
             // foreign
             $table->foreign('club_id')->references('id')->on('clubs')->onDelete('cascade');
-     });
+        });
     }
 
     public function down(): void

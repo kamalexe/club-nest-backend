@@ -29,7 +29,7 @@
                     <div class="right-content">
                         <h4>{{ $event->name }}</h4>
 
-                        <span>{{ $event->tickets->sum('tickets_available') }} Tickets still available</span>
+                        <span>{{ $event->max_capacity }} Tickets still available</span>
 
                         <ul>
                             {{-- <li><i class="fa fa-clock-o"></i> Thursday 18:00 to 22:00</li> --}}
@@ -42,7 +42,7 @@
                         <div class="quantity-content">
                             <div class="left-content">
                                 <h6>Standard Ticket</h6>
-                                <p>$ {{ $event->tickets->sum('price') }} per ticket</p>
+                                <p>$ {{ $event->ticket_price }} per ticket</p>
                             </div>
                             <div class="right-content">
                                 <div class="quantity buttons_added">

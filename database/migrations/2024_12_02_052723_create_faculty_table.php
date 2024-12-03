@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('department');
             $table->string('post')->nullable();
             $table->string('phone')->nullable();
-            $table->string('image')->nullable();
+            $table->string('image');
             $table->timestamps();
         });
     }
