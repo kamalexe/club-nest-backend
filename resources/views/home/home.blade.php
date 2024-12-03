@@ -5,8 +5,6 @@
 
     <div class="main-banner">
         @php
-            // $recentEvent = $mostrecentEventUpcoming ? $mostrecentEventUpcoming : $mostrecentEventPrevious;
-            // $recentEvent = $mostrecentEventPrevious ? $mostrecentEventPrevious : $mostrecentEventUpcoming;
             $date = $recentEvent->date;
             $time = $recentEvent->time;
             $eventDateTime = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', "{$date} {$time}");
@@ -154,15 +152,7 @@
                     </div>
                 </div>
                 @foreach ($clubs as $club)
-                    @livewire('venue-item', [
-                        'venueImage' => $club->image,
-                        'venueName' => $club->name,
-                        'venueDescription' => $club->description,
-                        'ticketsSold' => 799,
-                        'maxCapacity' => 2131,
-                        'ticketPrice' => 0344,
-                        'urlPath' => route('club.show', $club->id),
-                    ])
+                    @livewire('venue-item', ['club' => $club])
                 @endforeach
             </div>
         </div>
@@ -182,16 +172,14 @@
                     <div class="col-lg-4">
                         <div class="event-item">
                             <div class="thumb">
-                                <a href="event-details.html"><img src="front/images/event-01.jpg" alt=""
-                                        loading="lazy"></a>
+                                <img src="front/images/event-01.jpg" alt="" loading="lazy">
                             </div>
                             <div class="down-content">
                                 <a href="{{ route('events.show', $discoverMore->id) }}">
-                                    <h4>{{ $discoverMore->name }}</h4>
+                                    <h4 class="max-lines" style="-webkit-line-clamp:2">{{ $discoverMore->name }}</h4>
                                 </a>
                                 <ul>
                                     <li><i class="fa fa-clock-o"></i> {{ $discoverMore->date }}</li>
-                                    {{-- <li><i class="fa fa-clock-o"></i> Tuesday: 15:30-19:30</li> --}}
                                     <li><i class="fa fa-map-marker"></i> {{ $discoverMore->location }}</li>
                                 </ul>
                             </div>

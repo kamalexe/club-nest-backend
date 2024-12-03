@@ -2,27 +2,16 @@
 
 namespace App\Livewire;
 
+use App\Models\Club;
 use Livewire\Component;
 
 class VenueItem extends Component
 {
-    public $venueImage;
-    public $venueName;
-    public $venueDescription;
-    public $ticketsSold;
-    public $maxCapacity;
-    public $ticketPrice;
-     public $urlPath;
 
-
-    public function mount($venueImage, $venueName, $venueDescription, $ticketsSold, $maxCapacity, $ticketPrice,$urlPath = null,)
+    public Club $club;
+    public function mount($club)
     {
-        $this->venueImage = $venueImage;
-        $this->venueName = $venueName;
-        $this->venueDescription = $venueDescription;
-        $this->ticketsSold = $ticketsSold;
-        $this->maxCapacity = $maxCapacity;
-        $this->ticketPrice = $ticketPrice;
+        $this->club =  $club;
     }
 
     public function render()

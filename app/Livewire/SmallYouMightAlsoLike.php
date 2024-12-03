@@ -7,11 +7,6 @@ use App\Models\Faculty;
 
 class SmallYouMightAlsoLike extends Component
 {
-    // public $eventImage;
-    // public $eventDateRange;
-    // public $eventName;
-    // public $eventDetailsRoute;
-    // public $ticketDetailsRoute;
 
     public Faculty $faculty;
     public function mount($faculty)

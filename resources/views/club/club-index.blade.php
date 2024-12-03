@@ -66,25 +66,13 @@
                 </div>
                 <div class="col-lg-12">
                     <div class="heading">
-                        <h2>Nest+Listing = Nesting</h2>
+                        <h2>Nest + Listing = Nesting</h2>
                     </div>
                 </div>
 
 
                 @foreach ($clubs as $club)
-                    {{-- @foreach ($club->inchargeMember as $incharge)
-                        <h1>{{ $incharge->name }}</h1>
-                    @endforeach --}}
-
-                    @livewire('small-club-card', [
-                        'image' => 'front/images/ticket-01.jpg',
-                        // 'image' => $ticket->event->image,
-                        'memberCount' => $club->clubMembers->count() ?? 0,
-                        'name' => $club->name,
-                        'incharge' => $club->inchargeMember()->name,
-                        'eventCount' => $club->events->count(),
-                        'ticketDetailsRoute' => route('club.show', $club->id),
-                    ])
+                    @livewire('small-club-card', ['club' => $club])
                 @endforeach
 
                 <div class="col-lg-12">

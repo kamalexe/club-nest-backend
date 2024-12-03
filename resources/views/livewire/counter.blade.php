@@ -1,34 +1,24 @@
-<style>
-    .max-lines {
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        -webkit-line-clamp: 2;
-        text-overflow: ellipsis;
-    }
-</style>
-
 <li>
     <div class="row">
         <div class="col-lg-3">
             <div class="title">
-                <h4 class="max-lines">{{ $label }}</h4>
-                <span>{{ $ticketsAvailable }} Tickets Available</span>
+                <h4 class="max-lines">{{ $event->name }}</h4>
+                <span>{{ $event->tickets->count() }} Tickets Available</span>
             </div>
         </div>
         <div class="col-lg-3">
             <div class="time">
-                <span><i class="fa fa-clock-o"></i> {{ $eventDate }}<br>{{ $eventTime }}</span>
+                <span><i class="fa fa-clock-o"></i> {{ $event->date }}<br>{{ $event->time }}</span>
             </div>
         </div>
         <div class="col-lg-3">
             <div class="place">
-                <span><i class="fa fa-map-marker"></i> {{ $location }}</span>
+                <span><i class="fa fa-map-marker"></i> {{ $event->location }}</span>
             </div>
         </div>
         <div class="col-lg-3">
             <div class="main-dark-button">
-                <a href="{{ $urlPath }}">Purchase Tickets</a>
+                <a href="{{ route('events.show', $event->id) }}">View in detail</a>
             </div>
         </div>
     </div>

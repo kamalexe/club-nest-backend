@@ -20,6 +20,15 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('front/css/owl-carousel.css') }}">
 
     <link rel="stylesheet" href="{{ asset('front/css/tooplate-artxibition.css') }}">
+    <style>
+        .max-lines {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            -webkit-line-clamp: 2;
+            text-overflow: ellipsis;
+        }
+    </style>
 
 
     <script>

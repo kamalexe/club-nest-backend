@@ -24,14 +24,7 @@
                 <div class="col-lg-12">
                     <ul>
                         @foreach ($events as $event)
-                            @livewire('counter', [
-                                'label' => $event->name,
-                                'ticketsAvailable' => $event->tickets->count(),
-                                'eventDate' => $event->date,
-                                'eventTime' => $event->time,
-                                'location' => $event->location,
-                                'urlPath' => route('events.show', $event->id),
-                            ])
+                            @livewire('counter', ['event' => $event])
                         @endforeach
                     </ul>
                 </div>

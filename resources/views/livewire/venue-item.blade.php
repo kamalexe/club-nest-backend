@@ -1,3 +1,6 @@
+<style>
+
+</style>
 <div class="col-lg-4">
     <div class="venue-item">
         <div class="thumb">
@@ -8,18 +11,20 @@
         <div class="down-content">
             <div class="left-content">
                 <div class="main-white-button">
-                    <a href="{{ $urlPath }}">Purchase Tickets</a>
+                    <a href="{{ route('club.show', $club->id) }}">Purchase Tickets</a>
                 </div>
             </div>
             <div class="right-content">
-                <h4>{{ $venueName }}</h4>
-                <p>{{ $venueDescription }}</p>
+                <h4 class="max-lines" style="-webkit-line-clamp:1">{{ $club->name }}</h4>
+                {{-- <p class="max-lines">{{ $club->description }}</p> --}}
+                <p class="max-lines" style="-webkit-line-clamp:6">{{ $club->description }}</p>
+
                 <ul>
-                    <li><i class="fa fa-sitemap"></i>{{ $maxCapacity }}</li>
-                    <li><i class="fa fa-user"></i>{{ $ticketsSold }}</li>
+                    <li><i class="fa fa-sitemap"></i>{{ $club->events->count() }}</li>
+                    <li><i class="fa fa-user"></i>{{ $club->members->count() }}</li>
                 </ul>
                 <div class="price">
-                    <span>1 ticket<br>from <em>${{ $ticketPrice }}</em></span>
+                    <span>1 ticket<br>from <em>Free</em></span>
                 </div>
             </div>
         </div>

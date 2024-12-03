@@ -2,15 +2,12 @@
 
 namespace App\Livewire;
 
+use App\Models\Club;
 use Livewire\Component;
 
 class SmallClubCard extends Component
 {
-    public $image;
-    public $name;
-    public $incharge;
-    public $memberCount;
-    public $eventCount;
+    public Club $club;
 
     public function render()
     {
