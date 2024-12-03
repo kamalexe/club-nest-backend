@@ -7,10 +7,7 @@ use Livewire\Component;
 
 class SmallEventCard extends Component
 {
-
-
     public Event $event;
-
     public function mount($event)
     {
         $this->event = $event;

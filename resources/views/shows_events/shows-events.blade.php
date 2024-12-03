@@ -29,9 +29,7 @@
                                 <h4><i class="fa fa-clock-o"></i> Get The Next Show Tickets</h4>
                                 <ul>
                                     @foreach ($events as $event)
-                                        @livewire('small-event-card', [
-                                            'event' => $event,
-                                        ])
+                                        @livewire('small-event-card', ['event' => $event])
                                     @endforeach
                                 </ul>
                             </div>

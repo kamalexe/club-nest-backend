@@ -2,7 +2,7 @@
     <h5>{{ $event->name }}</h5>
     <span>{{ $event->date }}<br>{{ $event->time }}</span>
     <div class="icon-button">
-        <a href="#">
+        <a href="{{ route('events.show', $event->id) }}">
             <i class="fa fa-shopping-cart"></i>
         </a>
     </div>
