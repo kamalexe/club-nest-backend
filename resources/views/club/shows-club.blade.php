@@ -70,28 +70,10 @@
                                 <div class="item">
                                     <a href="">
                                         <img src={{ $volunteers->image }} alt="" loading="lazy">
-
-                                        {{-- {{ $volunteers->name }} --}}
-                                        {{-- <img src="https://picsum.photos/200/200" alt="" loading="lazy"> --}}
+                                        <img src="{{ Storage::url($volunteers->image) }}" alt="" loading="lazy">
                                     </a>
                                 </div>
                             @endforeach
-
-                            {{-- <div class="item">
-                                <a href="">
-                                    <img src="https://picsum.photos/200/200" alt="" loading="lazy">
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="">
-                                    <img src="https://picsum.photos/200/200" alt="" loading="lazy">
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="">
-                                    <img src="https://picsum.photos/200/200" alt="" loading="lazy">
-                                </a>
-                            </div> --}}
                         </div>
                     </div>
                 </div>

@@ -4,6 +4,38 @@
     <!-- ***** Main Banner Area Start ***** -->
 
     <div class="main-banner">
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const second = 1000,
+                    minute = second * 60,
+                    hour = minute * 60,
+                    day = hour * 24;
+
+                // Set countdown date from PHP
+                let countDownDate = new Date("{{ $recentEvent->start_date }}").getTime();
+
+                // Update the countdown every second
+                let x = setInterval(function() {
+                    let now = new Date().getTime(),
+                        distance = countDownDate - now;
+
+                    document.getElementById('days').innerText = Math.floor(distance / day);
+                    document.getElementById('hours').innerText = Math.floor((distance % day) / hour);
+                    document.getElementById('minutes').innerText = Math.floor((distance % hour) / minute);
+                    document.getElementById('seconds').innerText = Math.floor((distance % minute) / second);
+
+                    // Stop countdown if the event is over
+                    if (distance < 0) {
+                        clearInterval(x);
+                        const eventMessage = {!! json_encode($isRecentEventEnded) !!} ?
+                            "The event has ended!" :
+                            "The event has started!";
+                        document.querySelector('.counter-content').innerHTML =
+                            `<p class='h2 text-white'>${eventMessage}</p>`;
+                    }
+                }, 1000);
+            });
+        </script>
 
         @if ($recentEvent)
             <div class="counter-content">
@@ -14,38 +46,6 @@
                     <li>Seconds<span id="seconds"></span></li>
                 </ul>
             </div>
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    const second = 1000,
-                        minute = second * 60,
-                        hour = minute * 60,
-                        day = hour * 24;
-
-                    // Set countdown date from PHP
-                    let countDownDate = new Date("{{ $recentEvent->date }} {{ $recentEvent->time }}").getTime();
-
-                    // Update the countdown every second
-                    let x = setInterval(function() {
-                        let now = new Date().getTime(),
-                            distance = countDownDate - now;
-
-                        document.getElementById('days').innerText = Math.floor(distance / day);
-                        document.getElementById('hours').innerText = Math.floor((distance % day) / hour);
-                        document.getElementById('minutes').innerText = Math.floor((distance % hour) / minute);
-                        document.getElementById('seconds').innerText = Math.floor((distance % minute) / second);
-
-                        // Stop countdown if the event is over
-                        if (distance < 0) {
-                            clearInterval(x);
-                            const eventMessage = {!! json_encode($isRecentEventEnded) !!} ?
-                                "The event has ended!" :
-                                "The event has started!";
-                            document.querySelector('.counter-content').innerHTML =
-                                `<p class='h2 text-white'>${eventMessage}</p>`;
-                        }
-                    }, 1000);
-                });
-            </script>
         @endif
 
         <div class="container">
@@ -80,7 +80,7 @@
                         @foreach ($events as $event)
                             <div class="item">
                                 <a href="{{ route('events.show', $event->id) }}">
-                                    <img src="{{ $event->image }}" alt="{{ $event->name }}" loading="lazy">
+                                    <img src="{{ Storage::url($event->image) }}" alt="{{ $event->name }}" loading="lazy">
                                 </a>
                             </div>
                         @endforeach
@@ -166,14 +166,14 @@
                     <div class="col-lg-4">
                         <div class="event-item">
                             <div class="thumb">
-                                <img src="front/images/event-01.jpg" alt="" loading="lazy">
+                                <img src="{{ Storage::url($discoverMore->image) }}" alt="" loading="lazy">
                             </div>
                             <div class="down-content">
                                 <a href="{{ route('events.show', $discoverMore->id) }}">
                                     <h4 class="max-lines" style="-webkit-line-clamp:2">{{ $discoverMore->name }}</h4>
                                 </a>
                                 <ul>
-                                    <li><i class="fa fa-clock-o"></i> {{ $discoverMore->date }}</li>
+                                    <li><i class="fa fa-clock-o"></i> {{ $discoverMore->formattedDate }}</li>
                                     <li><i class="fa fa-map-marker"></i> {{ $discoverMore->location }}</li>
                                 </ul>
                             </div>

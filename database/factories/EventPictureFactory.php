@@ -14,7 +14,8 @@ class EventPictureFactory extends Factory
     {
         return [
             'event_id' => null,
-            'picture' => $this->faker->imageUrl(640, 480, 'events', true), // Generate a random image URL
+            'picture' =>  '01JER2M7KZWQA9NF2YW7JFDM2Q.jpg',
+            'caption' => $this->faker->paragraph,
         ];;
     }
 }

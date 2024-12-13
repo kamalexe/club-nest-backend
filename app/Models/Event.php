@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\EventType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Carbon\Carbon;
+use Carbon\CarbonInterval;
 
 class Event extends Model
 {
@@ -16,12 +18,21 @@ class Event extends Model
         'image',
         'name',
         'description',
-        'date',
-        'time',
+        'start_date',
+        'duration',
         'guests',
         'max_capacity',
+        'event_type',
         'location',
-        'ticket_price'
+    ];
+    public function pictures()
+    {
+        return $this->hasMany(EventPicture::class);
+    }
+
+    protected $casts = [
+        'start_date' => 'datetime',
+        'event_type' => EventType::class,
     ];
 
     public function club()
@@ -29,37 +40,66 @@ class Event extends Model
         return $this->belongsTo(Club::class);
     }
 
+    public function teams()
+    {
+        return $this->hasMany(Team::class);
+    }
+
+    public function competitions()
+    {
+        return $this->hasMany(Competition::class);
+    }
+
+    protected function duration(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => CarbonInterval::minutes($value)->cascade()->forHumans(),
+            set: fn($value) => is_numeric($value)
+                ? $value
+                : CarbonInterval::fromString($value)->totalMinutes
+        );
+    }
 
     protected function dayName(): Attribute
     {
         return Attribute::make(
-            get: fn($value, $attributes) => Carbon::parse($attributes['date'])->format('l')
+            get: fn($value, $attributes) => Carbon::parse($attributes['start_date'])->format('l')
         );
     }
 
     protected function formattedDate(): Attribute
     {
         return Attribute::make(
-            get: fn($value, $attributes) => \Carbon\Carbon::parse($attributes['date'])->format('l, F jS, Y'), // Example: Thursday, March 31st, 2022
-            set: fn($value) => \Carbon\Carbon::createFromFormat('Y-m-d', $value)->toDateString() // Ensure stored format is 'Y-m-d'
+            get: fn($value) => Carbon::parse($value)->format('l, F jS, Y'),
+            set: fn($value) => Carbon::createFromFormat('l, F jS, Y', $value)->toDateString()
         );
     }
-    protected function formattedDate1(): Attribute
+    protected function formattedDateOnly(): Attribute
     {
         return Attribute::make(
-            get: fn($value, $attributes) => \Carbon\Carbon::parse($attributes['date'])->format('F jS'), // Example: Thursday, March 31st, 2022
-            set: fn($value) => \Carbon\Carbon::createFromFormat('Y-m-d', $value)->toDateString() // Ensure stored format is 'Y-m-d'
+            get: fn($value) => Carbon::parse($value)->format('F jS'),
+            set: fn($value) => Carbon::createFromFormat('l, F jS, Y', $value)->toDateString()
+        );
+    }
+    protected function formattedStartDate(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => Carbon::parse($value)->format('F j, l') // August 24 Friday
         );
     }
 
-    protected function formattedTime(): Attribute
+    protected function formattedTimeRange(): Attribute
     {
         return Attribute::make(
-            get: fn($value, $attributes) => Carbon::parse($attributes['time'])->format('h:i A') // 12-hour format with AM/PM
+            get: fn($value, $attributes) =>
+            Carbon::parse($attributes['start_date'])->format('g:i A') . ' to ' .
+                Carbon::parse($attributes['start_date'])->addMinutes($attributes['duration'])->format('g:i A')
         );
     }
-    public function pictures()
+
+
+    public function isEventEnded(): bool
     {
-        return $this->hasMany(EventPicture::class);
+        return $this->start_date->isPast();
     }
 }

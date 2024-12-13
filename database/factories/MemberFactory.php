@@ -46,7 +46,7 @@ class MemberFactory extends Factory
             'post' => $this->faker->randomElement($posts),
             'incharge' => $incharge ? false : $this->faker->boolean,
             'email' => $this->faker->unique()->safeEmail,
-            'image' => $this->faker->imageUrl(),
+            'image' => '01JER2M7KZWQA9NF2YW7JFDM2Q.jpg',
             'phone' => $this->faker->phoneNumber,
             'club_id' => Club::factory(),  // Associate with a club
         ];

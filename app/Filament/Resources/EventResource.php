@@ -2,9 +2,11 @@
 
 namespace App\Filament\Resources;
 
+use App\EventType;
 use App\Filament\Resources\EventResource\Pages;
 use App\Filament\Resources\EventResource\RelationManagers;
 use App\Models\Event;
+use Carbon\Carbon;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -17,11 +19,9 @@ class EventResource extends Resource
 {
     protected static ?string $model = Event::class;
 
-    // protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationGroup = 'Events';  // Optional: Set a navigation group
-    protected static ?string $navigationLabel = 'Events';  // Optional: Set a navigation label
-    protected static ?string $navigationIcon = 'heroicon-o-calendar';  // Set a navigation icon (optional)
-
+    protected static ?string $navigationLabel = 'Events';
+    protected static ?string $navigationGroup = 'Event Management';
+    protected static ?string $navigationIcon = 'heroicon-o-calendar';
 
     public static function form(Form $form): Form
     {
@@ -34,21 +34,45 @@ class EventResource extends Resource
                     ->required(),
                 Forms\Components\FileUpload::make('image')
                     ->image(),
-                Forms\Components\DatePicker::make('date')
+                Forms\Components\DatePicker::make('start_date')
                     ->required(),
-                Forms\Components\TimePicker::make('time')
-                    ->required(),
+                Forms\Components\TextInput::make('duration')
+                    ->label('Duration (e.g., HH:MM)')
+                    ->required()
+                    ->helperText('Enter duration in HH:MM format.'),
+
                 Forms\Components\TextInput::make('location')
                     ->required(),
                 Forms\Components\TextInput::make('guests'),
                 Forms\Components\TextInput::make('max_capacity')
                     ->numeric(),
-                Forms\Components\TextInput::make('ticket_price')
-                    ->numeric()
-                    ->prefix('$'),
+
+                // Forms\Components\Select::make('event_type')
+                //     ->options([
+                //         'competition' => 'Competition',
+                //         'workshop' => 'Workshop',
+                //         'lecture' => 'Lecture',
+                //     ])
+                //     ->required(),
+                Forms\Components\Select::make('event_type')
+                    ->options(
+                        collect(EventType::cases())->mapWithKeys(fn($type) => [$type->value => $type->label()])
+                    )
+                    ->required(),
                 Forms\Components\Select::make('club_id')
                     ->relationship('club', 'name')
                     ->required(),
+                Forms\Components\Repeater::make('pictures')
+                    ->relationship('pictures')
+                    ->schema([
+                        Forms\Components\FileUpload::make('picture')
+                            ->image()
+                            ->label('Picture'),
+                        Forms\Components\TextInput::make('caption')
+                            ->label('Caption')
+                            ->maxLength(255),
+                    ])
+                    ->label('Event Pictures'),
             ]);
     }
 
@@ -59,14 +83,17 @@ class EventResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('duration')
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('club.name')
                     ->label('Club')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('formattedDate')
                     ->label('Date')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('formattedTime')
-                    ->label('Time')
+                Tables\Columns\TextColumn::make('event_type')
+                    ->label('Event type')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('location')
                     ->sortable(),

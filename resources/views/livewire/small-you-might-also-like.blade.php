@@ -2,7 +2,7 @@
     <div class="like-item">
         <div class="thumb">
 
-            <img src="{{ asset($faculty->image) }}" alt="">
+            <img src="{{ Storage::url($faculty->image) }}" alt="">
 
             <div class="icons">
                 <ul>

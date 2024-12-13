@@ -15,12 +15,12 @@ return new class extends Migration
             $table->string('image');
             $table->string('name');
             $table->text('description');
-            $table->date('date');
-            $table->time('time');
+            $table->datetime('start_date');
+            $table->integer('duration')->nullable();
             $table->integer('max_capacity');
             $table->string('location');
-            $table->decimal('ticket_price', 8, 2);
             $table->integer('guests');
+            $table->string('event_type');
             $table->timestamps();
             // foreign
             $table->foreign('club_id')->references('id')->on('clubs')->onDelete('cascade');

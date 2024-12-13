@@ -23,7 +23,7 @@ class FacultySeeder extends Seeder
                 'post' => 'Head of the Department',
                 'phone' => $faker->phoneNumber(),
                 'email' => $faker->unique()->safeEmail(),
-                'image' => $faker->imageUrl(150, 150, 'people', true, 'Profile'),
+                'image' => '01JER2M7KZWQA9NF2YW7JFDM2Q.jpg',
             ],
             [
                 'name' => 'Er. Subodh Sharma',
@@ -31,7 +31,7 @@ class FacultySeeder extends Seeder
                 'post' => 'Assistant Professor',
                 'phone' => $faker->phoneNumber(),
                 'email' => $faker->unique()->safeEmail(),
-                'image' => $faker->imageUrl(150, 150, 'people', true, 'Profile'),
+                'image' => '01JER2M7KZWQA9NF2YW7JFDM2Q.jpg',
             ],
             [
                 'name' => 'Er. Prashant Maharshi',
@@ -39,7 +39,7 @@ class FacultySeeder extends Seeder
                 'post' => 'Assistant Professor',
                 'phone' => $faker->phoneNumber(),
                 'email' => $faker->unique()->safeEmail(),
-                'image' => $faker->imageUrl(150, 150, 'people', true, 'Profile'),
+                'image' => '01JER2M7KZWQA9NF2YW7JFDM2Q.jpg',
             ],
             [
                 'name' => 'Er. Saurabh Garg',
@@ -47,7 +47,7 @@ class FacultySeeder extends Seeder
                 'post' => 'Assistant Professor',
                 'phone' => $faker->phoneNumber(),
                 'email' => $faker->unique()->safeEmail(),
-                'image' => $faker->imageUrl(150, 150, 'people', true, 'Profile'),
+                'image' => '01JER2M7KZWQA9NF2YW7JFDM2Q.jpg',
             ],
             [
                 'name' => 'Er. Aditi A.K Gupta',
@@ -55,7 +55,7 @@ class FacultySeeder extends Seeder
                 'post' => 'Assistant Professor',
                 'phone' => $faker->phoneNumber(),
                 'email' => $faker->unique()->safeEmail(),
-                'image' => $faker->imageUrl(150, 150, 'people', true, 'Profile'),
+                'image' => '01JER2M7KZWQA9NF2YW7JFDM2Q.jpg',
             ],
             [
                 'name' => 'Er. Pragya Kabra',
@@ -63,7 +63,7 @@ class FacultySeeder extends Seeder
                 'post' => 'Assistant Professor',
                 'phone' => $faker->phoneNumber(),
                 'email' => $faker->unique()->safeEmail(),
-                'image' => $faker->imageUrl(150, 150, 'people', true, 'Profile'),
+                'image' => '01JER2M7KZWQA9NF2YW7JFDM2Q.jpg',
             ],
             [
                 'name' => 'Er. Shikhi Agarwal',
@@ -71,7 +71,7 @@ class FacultySeeder extends Seeder
                 'post' => 'Assistant Professor',
                 'phone' => $faker->phoneNumber(),
                 'email' => $faker->unique()->safeEmail(),
-                'image' => $faker->imageUrl(150, 150, 'people', true, 'Profile'),
+                'image' => '01JER2M7KZWQA9NF2YW7JFDM2Q.jpg',
             ]
         ];
 

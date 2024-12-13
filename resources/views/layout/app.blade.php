@@ -211,6 +211,11 @@
                                     class="{{ request()->routeIs('club.index') ? 'active' : '' }}">Our Nest
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('competition.index') }}"
+                                    class="{{ request()->routeIs('competition.index') ? 'active' : '' }}">Competitions
+                                </a>
+                            </li>
                         </ul>
 
                         <a class='menu-trigger'>
@@ -318,6 +323,8 @@
                                         <li><a href="{{ route('about') }}">About Us</a></li>
                                         <li><a href="{{ route('events.index') }}">Shows & Events</a></li>
                                         <li><a href="{{ route('club.index') }}">Our Nest</a></li>
+                                        <li><a href="{{ route('competition.index') }}">Competitions</a></li>
+
                                     </ul>
                                 </div>
                             </div>

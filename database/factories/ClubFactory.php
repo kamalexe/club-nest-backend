@@ -17,7 +17,7 @@ class ClubFactory extends Factory
 
             'name' => $this->faker->company,
             'description' => $this->faker->text(200),
-            'image' => $this->faker->imageUrl(150, 150),
+            'image' => 'coding_club.png',
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Competition;
 use Illuminate\Http\Request;
 use App\Models\Event;
 
@@ -29,6 +30,8 @@ class EventController extends Controller
         $events = Event::paginate(10);
         return view('ticket_details.ticket-details', ['event' => $event, 'events' => $events]);
     }
+
+
     public function edit(string $id)
     {
         //

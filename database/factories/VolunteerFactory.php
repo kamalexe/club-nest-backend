@@ -21,6 +21,7 @@ class VolunteerFactory extends Factory
             'club_id' => Club::factory(),
             'name' => $this->faker->name,
             'email' => $this->faker->email,
+            'image' => '01JER2M7KZWQA9NF2YW7JFDM2Q.jpg',
             'role' => $this->faker->jobTitle,
         ];
     }

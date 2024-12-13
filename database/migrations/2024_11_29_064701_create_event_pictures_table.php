@@ -13,6 +13,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('event_id');
             $table->string('picture');
+            $table->text('caption');
             $table->timestamps();
 
             // Foreign key

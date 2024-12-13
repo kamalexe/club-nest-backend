@@ -22,7 +22,7 @@ class FacultyFactory extends Factory
             'department' => $this->faker->randomElement(['CS', 'IT', 'ME', 'CE', 'EE']),
             'post' => $this->faker->randomElement(['Professor', 'Associate Professor', 'Lecturer']),
             'phone' => $this->faker->phoneNumber(),
-            'image' => $this->faker->imageUrl(150, 150, 'people', true, 'Profile'),
+            'image' => '01JER2M7KZWQA9NF2YW7JFDM2Q.jpg',
         ];
     }
 }

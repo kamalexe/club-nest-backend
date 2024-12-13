@@ -18,7 +18,7 @@ class ClubResource extends Resource
 {
     protected static ?string $model = Club::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-star';
 
     public static function form(Form $form): Form
     {
@@ -85,7 +85,11 @@ class ClubResource extends Resource
                     ->limit(50)
                     ->label('Description'),
                 Tables\Columns\ImageColumn::make('image')
-                    ->label('Club Image'),
+                    ->label('Club Image')
+                    ->width(150) // Width of the image thumbnail
+                    ->height(150) // Height of the image thumbnail
+                    ->square()
+                    ->url(fn($record) => asset('storage/' . $record->image)),
                 Tables\Columns\TextColumn::make('members_count')
                     ->counts('members')
                     ->label('Total Members'),

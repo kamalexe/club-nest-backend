@@ -29,33 +29,24 @@
                     <div class="right-content">
                         <h4>{{ $event->name }}</h4>
 
-                        <span>{{ $event->max_capacity }} Tickets still available</span>
+                        <span>Event Type: {{ $event->event_type->getDetails()['label'] }}</span>
 
                         <ul>
                             {{-- <li><i class="fa fa-clock-o"></i> Thursday 18:00 to 22:00</li> --}}
-                            <li>
-                                <i class="fa fa-clock-o"></i>{{ $event->day_name }} {{ $event->date }}
-                            </li>
-                            <li><i class="fa fa-map-marker"></i>{{ $event->description }}
-                            </li>
+                            <li> <i class="fa fa-clock-o"></i>{{ $event->day_name }} {{ $event->formattedTimeRange }}</li>
+                            <li><i class="fa fa-info-circle"></i>{{ $event->description }} </li>
+                            <li><i class="fa fa-map-marker"></i>{{ $event->location }} </li>
+
                         </ul>
-                        <div class="quantity-content">
-                            <div class="left-content">
-                                <h6>Standard Ticket</h6>
-                                <p>$ {{ $event->ticket_price }} per ticket</p>
-                            </div>
-                            <div class="right-content">
-                                <div class="quantity buttons_added">
-                                    <input type="button" value="-" class="minus"><input type="number" step="1"
-                                        min="1" max="" name="quantity" value="1" title="Qty"
-                                        class="input-text qty text" size="4" pattern="" inputmode=""><input
-                                        type="button" value="+" class="plus">
-                                </div>
-                            </div>
-                        </div>
+
                         <div class="total">
-                            <h4>Total: $210.00</h4>
-                            <div class="main-dark-button"><a href="https://www.paytmbank.com/">Purchase Tickets</a></div>
+                            {{-- <h4>Total: $210.00</h4> --}}
+                            <div class="main-dark-button">
+                                <a href="{{ route($event->event_type->getDetails()['route']) }}">
+                                    {{ $event->event_type->getDetails()['button_message'] }}
+                                </a>
+                            </div>
+
                         </div>
                         <div class="warn">
                             <p>*You Can Only Buy 10 Tickets For This Show</p>
@@ -72,7 +63,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2>{{ $event->club->name }}</h2>
+                        <h2>Our Club Incharge</h2>
                         <span>September 24-28, 2021 in Rio de Janeiro</span>
                     </div>
                 </div>
@@ -91,9 +82,9 @@
                         @if ($event->club && $event->club->members->isNotEmpty())
                             <div class="right-content">
                                 <div class="about-map-image">
-                                    <img src="{{ asset('front/images/about-map-image.jpg') }}" alt="party location">
 
-                                    {{-- <img src="{{ $event->club->inchargeMember()->image }}" alt="party location"> --}}
+                                    <img src="{{ Storage::url($event->club->inchargeMember()->image) }}" alt=""
+                                        loading="lazy">
                                 </div>
                                 <div class="down-content">
                                     <h4>{{ $event->club->inchargeMember()->name }}</h4>
@@ -122,15 +113,7 @@
                     <h2>Meet Our Members...</h2>
                 </div>
                 @foreach ($event->club->clubMembers as $member)
-                    @livewire('member-card', [
-                        // 'eventImage' => $members->image,
-                        // 'eventImage' => 'front/images/about-map-image.jpg',
-                        'member' => $member,
-                        // 'eventName' => $members->name,
-                        // //  'eventDetailsRoute' => 'event-details',
-                        // 'eventDetailsRoute' => '#',
-                        // 'ticketDetailsRoute' => '#',
-                    ])
+                    @livewire('member-card', ['member' => $member])
                 @endforeach
 
             </div>
@@ -144,13 +127,38 @@
                     <h2>Discover the Visual Stories</h2>
                 </div>
                 <div class="col-lg-12">
+                    <style>
+                        .caption-overlay {
+                            display: none;
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            width: 100%;
+                            background-color: rgba(0, 0, 0, 0.638);
+                            color: rgb(250, 8, 8);
+                            padding: 10px;
+                            text-align: center;
+                            font-size: 14px;
+                            opacity: 0;
+                            transition: opacity 1s ease;
+                        }
+
+                        .item:hover .caption-overlay {
+                            display: block;
+                            opacity: 1;
+                        }
+                    </style>
                     <div class="owl-show-events owl-carousel" style="margin:0%">
                         @foreach ($event->pictures as $picture)
-                            <div class="item">
+                            <div class="item position-relative img-thumbnail border rounded">
                                 <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal"
                                     data-bs-image="{{ asset($picture->picture) }}">
-                                    <img src="{{ asset('front/images/like-01.jpg') }}" alt="{{ $picture->picture }}"
-                                        loading="lazy">
+                                    <img style="aspect-ratio:1;object-fit:cover"
+                                        src="{{ Storage::url($picture->picture) }}"
+                                        alt="{{ $picture->picture ?? 'Default Picture' }}" loading="lazy">
+                                    <div class="caption-overlay position-absolute bottom-0 start-0 w-100 text-white p-2">
+                                        {{ $picture->caption ?? 'No Caption' }}
+                                    </div>
                                 </a>
                             </div>
                         @endforeach

@@ -25,17 +25,18 @@
                 <div class="col-lg-4">
                     <div class="right-content">
                         <div class="about-map-image">
-                            <img src="{{ asset('front/images/about-map-image.jpg') }}" alt="party location">
+                            <img src="{{ Storage::url($recentEvent->image) }}" alt="{{ $recentEvent->name }}"
+                                loading="lazy">
                         </div>
                         <div class="down-content">
-                            <h4>Radio City Musical Hall</h4>
+                            <h4>{{ $recentEvent->name }}</h4>
                             <ul>
-                                <li>August 24 Friday</li>
-                                <li>09:30 AM - 07:00 PM</li>
+                                <li>{{ $recentEvent->formattedStartDate }}</li>
+                                <li>{{ $recentEvent->formattedTimeRange }}</li>
                             </ul>
                             <span><i class="fa fa-ticket"></i> Tickets Starting From $34.00</span>
                             <div class="main-dark-button">
-                                <a href="#">Ticket Details</a>
+                                <a href="#">View Details</a>
                             </div>
                         </div>
                     </div>
@@ -103,7 +104,7 @@
                         // 'eventImage' => 'front/images/icon-person.png',
                         'faculty' => $faculty,
                         // 'eventImage' => $faculty->image,
-                    
+
                         // 'eventDateRange' => $faculty->department,
                         // 'eventName' => $faculty->name,
                         // 'eventDetailsRoute' => 'event-details',

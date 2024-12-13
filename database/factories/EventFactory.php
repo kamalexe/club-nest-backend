@@ -1,6 +1,8 @@
 <?php
 
 namespace Database\Factories;
+
+use App\EventType;
 use App\Models\Event;
 use App\Models\Club;
 use Illuminate\Support\Str;
@@ -17,15 +19,15 @@ class EventFactory extends Factory
     {
         return [
             'club_id' => Club::factory(),  // Use the Club factory directly
-            'image' => $this->faker->imageUrl(),
+            'image' => '01JER2M7KZWQA9NF2YW7JFDM2Q.jpg',
             'name' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
-            'date' => $this->faker->date(),
-            'time' => $this->faker->time(),
+            'start_date' => $this->faker->dateTime(),
+            'duration' => 627,
+            'event_type' => $this->faker->randomElement(EventType::cases())->value,
             'guests' => $this->faker->numberBetween(50, 200),
             'max_capacity' => $this->faker->numberBetween(100, 500),
             'location' => $this->faker->address,
-            'ticket_price' => $this->faker->randomFloat(2, 10, 100),
         ];
     }
 }

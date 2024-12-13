@@ -10,7 +10,7 @@ class EventPicture extends Model
     /** @use HasFactory<\Database\Factories\EventPictureFactory> */
     use HasFactory;
 
-    protected $fillable = ['event_id', 'picture'];
+    protected $fillable = ['event_id', 'picture', 'caption'];
 
     public function event()
     {

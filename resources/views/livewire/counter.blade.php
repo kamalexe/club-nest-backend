@@ -8,7 +8,7 @@
         </div>
         <div class="col-lg-3">
             <div class="time">
-                <span><i class="fa fa-clock-o"></i> {{ $event->date }}<br>{{ $event->time }}</span>
+                <span><i class="fa fa-clock-o"></i> {{ $event->start_date }} <br> {{ $event->duration }}</span>
             </div>
         </div>
         <div class="col-lg-3">

@@ -4,9 +4,7 @@
 <div class="col-lg-4">
     <div class="venue-item">
         <div class="thumb">
-            {{-- <img src="{{ $venueImage }}" alt=""> --}}
-            <img alt="Venue Image" src='{{ asset('front/images/event-01.jpg') }}'>
-
+            <img src="{{ Storage::url($club->image) }}" alt={{ $club->name }}>
         </div>
         <div class="down-content">
             <div class="left-content">
@@ -16,7 +14,6 @@
             </div>
             <div class="right-content">
                 <h4 class="max-lines" style="-webkit-line-clamp:1">{{ $club->name }}</h4>
-                {{-- <p class="max-lines">{{ $club->description }}</p> --}}
                 <p class="max-lines" style="-webkit-line-clamp:6">{{ $club->description }}</p>
 
                 <ul>
