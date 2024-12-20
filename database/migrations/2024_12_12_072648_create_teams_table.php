@@ -15,8 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('leader_name');
+            $table->string('leader_email');
+            $table->string('leader_phone');
+            $table->string('leader_semester')->default('1st Year - 1st Semester');
+            $table->string('leader_branch')->default('Computer Science & Engineering');
             $table->timestamps();
-
             $table->foreignId('event_id')->constrained()->onDelete('cascade');
         });
     }

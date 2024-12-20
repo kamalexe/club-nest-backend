@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Dotenv\Util\Str;
 
 enum EventType: string
 {
@@ -28,7 +27,6 @@ enum EventType: string
         };
     }
 
-    // Optionally, you can return both label and button message together in an array or object
     public function getDetails(): array
     {
         return [

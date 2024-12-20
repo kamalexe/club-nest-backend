@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone');
             $table->string('participants_type')->default('individual');
+            $table->string('semester')->default('1st Year - 1st Semester');
+            $table->string('branch')->default('Computer Science & Engineering');
+
             $table->timestamps();
 
             $table->foreignId('event_id')->constrained()->onDelete('cascade'); // Event participant is registered in

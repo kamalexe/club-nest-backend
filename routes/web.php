@@ -25,8 +25,8 @@ Route::get('/competition', [CompetitionController::class, 'index'])->name('compe
 Route::get('events/{event}/competitions', [CompetitionController::class, 'competitions'])->name('events.competition');
 
 
-Route::get('/register-individual', [RegistrationController::class, 'registerIndividual'])->name('register.individual');
-Route::get('/register-team', [RegistrationController::class, 'registerTeam'])->name('register.team');
+Route::get('/register-individual/{competition}', [RegistrationController::class, 'registerIndividual'])->name('register.individual');
+Route::get('/register-team/{competition}', [RegistrationController::class, 'registerTeam'])->name('register.team');
 
-Route::post('/register-individual', [RegistrationController::class, 'registerIndividualStore'])->name('register.individual');
-Route::post('/register-team', [RegistrationController::class, 'registerTeamStore'])->name('register.team');
+Route::post('/register-individual', [RegistrationController::class, 'registerIndividualStore'])->name('register.store.individual');
+Route::post('/register-team', [RegistrationController::class, 'registerTeamStore'])->name('register.store.team');

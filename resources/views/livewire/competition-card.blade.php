@@ -36,34 +36,11 @@
         @foreach ($routes as $route)
             <div class={{ $bothBtn }}>
                 <div class="main-dark-button">
-                    <a href="{{ route($route['route']) }}">{{ $route['label'] }}</a>
+                    <a
+                        href="{{ route($route['route'], ['competition' => $competition->id]) }}">{{ $route['label'] }}</a>
                 </div>
             </div>
         @endforeach
-        {{-- @if ($competition->competition_type === \App\CompetitionType::INDIVIDUAL)
-            <div class="col-lg-2">
-                <div class="main-dark-button">
-                    <a href="{{ route('register.individual') }}">Register as individual</a>
-                </div>
-            </div>
-        @elseif ($competition->competition_type === \App\CompetitionType::TEAM)
-            <div class="col-lg-2">
-                <div class="main-dark-button">
-                    <a href="{{ route('register.team') }}">Register as team</a>
-                </div>
-            </div>
-        @elseif ($competition->competition_type === \App\CompetitionType::BOTH)
-            <div class="col-lg-2">
-                <div class="main-dark-button">
-                    <a href="{{ route('register.individual') }}">Register as individual</a>
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="main-dark-button">
-                    <a href="{{ route('register.team') }}">Register as team</a>
-                </div>
-            </div>
-        @endif --}}
 
 
 

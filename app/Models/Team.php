@@ -9,7 +9,7 @@ class Team extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'event_id', 'leader_name'];
+    protected $fillable = ['name', 'event_id', 'leader_name', 'leader_email', 'leader_phone', 'leader_semester', 'leader_branch'];
 
     // Relationship: Each team belongs to an event
     public function event()

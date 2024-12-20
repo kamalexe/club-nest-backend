@@ -20,7 +20,7 @@
                         <h4>We’re Here to Help</h4>
                     </div>
                     <div class="contact-form">
-                        <form id="contact" action="{{ route('register.individual') }}" method="post">
+                        <form id="contact" action="{{ route('register.store.individual') }}" method="post">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6 col-sm-12">
