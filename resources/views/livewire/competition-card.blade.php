@@ -3,10 +3,12 @@
         use App\CompetitionType;
 
         $routes = match ($competition->competition_type) {
-            CompetitionType::INDIVIDUAL => [['route' => 'register.individual', 'label' => 'Register as individual']],
+            CompetitionType::INDIVIDUAL => [
+                ['route' => 'register.competition.individual', 'label' => 'Register as individual'],
+            ],
             CompetitionType::TEAM => [['route' => 'register.team', 'label' => 'Register as team']],
             CompetitionType::BOTH => [
-                ['route' => 'register.individual', 'label' => 'Register as individual'],
+                ['route' => 'register.competition.individual', 'label' => 'Register as individual'],
                 ['route' => 'register.team', 'label' => 'Register as team'],
             ],
             default => [],

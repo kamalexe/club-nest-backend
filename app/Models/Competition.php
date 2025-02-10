@@ -12,7 +12,7 @@ class Competition extends Model
 
     protected $fillable = ['event_id', 'rules', 'scoring_system', 'prizes', 'competition_type'];
     protected $casts = [
-        'competition_type' => CompetitionType::class,
+        'competition_type' => CompetitionType::class
     ];
 
 

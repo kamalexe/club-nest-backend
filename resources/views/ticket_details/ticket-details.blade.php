@@ -14,49 +14,7 @@
         </div>
     </div>
 
-    <div class="ticket-details-page">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="left-image">
-
-                        <img src="{{ asset('front/images/about-map-image.jpg') }}" alt={{ $event->image }}
-                            class="img-fluid w-100">
-                        {{-- <img src={{ $event->image }} alt={{ $event->image }} class="img-fluid w-100"> --}}
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="right-content">
-                        <h4>{{ $event->name }}</h4>
-
-                        <span>Event Type: {{ $event->event_type->getDetails()['label'] }}</span>
-
-                        <ul>
-                            {{-- <li><i class="fa fa-clock-o"></i> Thursday 18:00 to 22:00</li> --}}
-                            <li> <i class="fa fa-clock-o"></i>{{ $event->day_name }} {{ $event->formattedTimeRange }}</li>
-                            <li><i class="fa fa-info-circle"></i>{{ $event->description }} </li>
-                            <li><i class="fa fa-map-marker"></i>{{ $event->location }} </li>
-
-                        </ul>
-
-                        <div class="total">
-                            {{-- <h4>Total: $210.00</h4> --}}
-                            <div class="main-dark-button">
-                                <a href="{{ route($event->event_type->getDetails()['route']) }}">
-                                    {{ $event->event_type->getDetails()['button_message'] }}
-                                </a>
-                            </div>
-
-                        </div>
-                        <div class="warn">
-                            <p>*You Can Only Buy 10 Tickets For This Show</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    @livewire('event-details-card', ['event' => $event])
 
     <div>
         <div class="page-heading-about">

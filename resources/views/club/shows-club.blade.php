@@ -29,7 +29,7 @@
                     <section class='tabs-content'>
                         <article id='tabs-1'>
                             <div class="next-shows">
-                                <h4><i class="fa fa-clock-o"></i> Get The Next Show Tickets</h4>
+                                <h4><i class="fa fa-calendar-check-o" aria-hidden="true"></i>Take look for our event</h4>
                                 <ul>
                                     @foreach ($events as $event)
                                         @livewire('small-event-card', ['event' => $event])

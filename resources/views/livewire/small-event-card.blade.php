@@ -3,7 +3,8 @@
     <span>{{ $event->formattedDateOnly }}<br>{{ $event->time }}</span>
     <div class="icon-button">
         <a href="{{ route('events.show', $event->id) }}">
-            <i class="fa fa-shopping-cart"></i>
+            {{-- <i class="fa fa-shopping-cart"></i> --}}
+            View
         </a>
     </div>
 </li>

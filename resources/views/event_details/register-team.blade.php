@@ -21,8 +21,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2>Register team</h2>
-                    <span>{{ $competition->event->description }}</span>
+                    <h2>Register for Competition</h2>
+                    <span>Register Here as team for competition {{ $competition->event->name }} </span>
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
             <div class="row">
                 <div class="col-lg-9">
                     <div class="heading-text">
-                        <h4>We’re Here to Help</h4>
+                        <h4>Enter your team detail</h4>
                     </div>
                     <div class="contact-form">
                         <form id="team_registration" action="{{ route('register.store.team') }}" method="post">
@@ -101,7 +101,7 @@
                                             value="{{ $competition->event->id }}">
                                     </fieldset>
                                     <fieldset>
-                                        <input type="text" placeholder="{{ $competition->event->name }}*" readonly
+                                        <input type="text" placeholder="{{ $competition->event->name }}*" hidden
                                             value="{{ $competition->event->name }}">
                                     </fieldset>
                                 </div>

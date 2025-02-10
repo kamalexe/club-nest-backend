@@ -19,9 +19,9 @@ class DatabaseSeeder extends Seeder
             VolunteerSeeder::class,
             EventPictureSeeder::class,
             FacultySeeder::class,
+            CompetitionSeeder::class,
             ParticipantsTableSeeder::class,
             TeamsTableSeeder::class,
-            CompetitionSeeder::class,
         ]);
     }
 }

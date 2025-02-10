@@ -76,7 +76,7 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="next-shows">
-                        <h4><i class="fa fa-clock-o"></i> Get The Next Show Tickets</h4>
+                        <h4><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Take look for our event</h4>
                         <ul>
 
                             @foreach ($events as $event)
@@ -104,7 +104,7 @@
                         // 'eventImage' => 'front/images/icon-person.png',
                         'faculty' => $faculty,
                         // 'eventImage' => $faculty->image,
-
+                    
                         // 'eventDateRange' => $faculty->department,
                         // 'eventName' => $faculty->name,
                         // 'eventDetailsRoute' => 'event-details',

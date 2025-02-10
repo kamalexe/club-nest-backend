@@ -56,7 +56,7 @@ class EventResource extends Resource
                 //     ->required(),
                 Forms\Components\Select::make('event_type')
                     ->options(
-                        collect(EventType::cases())->mapWithKeys(fn($type) => [$type->value => $type->label()])
+                        collect(EventType::cases())->mapWithKeys(fn($type) => [])
                     )
                     ->required(),
                 Forms\Components\Select::make('club_id')
