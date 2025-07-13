@@ -18,4 +18,12 @@
             </a>
         </div>
     </div>
+    <style>
+        .post-badge {
+            background: white;
+            padding: 4px 12px;
+            border-radius: 48px;
+        }
+    </style>
+
 </div>
